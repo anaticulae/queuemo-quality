@@ -11,6 +11,7 @@ import os
 import subprocess
 import time
 
+import pytest
 import utila
 
 import tests.resources
@@ -26,7 +27,6 @@ def test_locomotive_run(testdir):
     locomotive.start()
 
     result = locomotive.wait()
-
     assert result.queuemo == 0, str(result)
 
 
@@ -50,10 +50,16 @@ def upload(file: str, server: str = SERVER, port: int = PORT):
     assert completed.returncode == utila.SUCCESS, str(completed)
 
 
-@utila.skip_longrun
-def test_cli(testdir):
-    port = 3500
-    source = tests.resources.MASTER72
+PARAMETER = [
+    pytest.param(item, port, id=utila.forward_slash(item))
+    for port, item in enumerate(tests.resources.FILES, start=3500)
+]
+
+
+@utila.skip_nightly
+@pytest.mark.parametrize('file, port', PARAMETER)
+def test_cli(file, port, testdir):
+    source = os.path.join(tests.resources.RESOURCES, file)
     workspace = str(testdir.tmpdir)
 
     cmd = f'train --workspace {workspace} -j=1 -p={port} -r=1000'
@@ -70,6 +76,10 @@ def test_cli(testdir):
     # wait for finish processing
     returncode = wait(process)
     assert returncode == utila.SUCCESS, returncode
+
+    ready = os.path.join(workspace, 'ready')
+    count = utila.file_count(ready)
+    assert count >= 15, ready
 
 
 def wait(process):
