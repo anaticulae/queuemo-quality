@@ -18,10 +18,17 @@ Status = collections.namedtuple('Status', 'viewo, queuemo')
 
 class Locomotive:
 
-    def __init__(self, root: str, viewo_port: int, runtime: int = 1):
+    def __init__(
+            self,
+            root: str,
+            viewo_port: int,
+            runtime: int = 1,
+            jobs: int = 1,
+    ):
         self.root = root
         self.viewo_port = viewo_port
         self.runtime = runtime
+        self.jobs = jobs
         self.viewo = None
         self.queuemo = None
 
@@ -63,7 +70,7 @@ class Locomotive:
         # ensure that process is started correctly
         assert check_process(self.viewo) is None
 
-        cmd = f'queuemo --runtime={self.runtime}'
+        cmd = f'queuemo --runtime={self.runtime} --jobs={self.jobs}'
         self.queuemo = subprocess.Popen(cmd, env=env)
         # ensure that process is started correctly
         assert check_process(self.queuemo) is None
