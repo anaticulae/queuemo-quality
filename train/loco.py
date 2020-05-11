@@ -68,8 +68,10 @@ class Locomotive:
         # ensure that process is started correctly
         assert check_process(self.queuemo) is None
 
-    def run(self, seconds=10) -> Status:
+    def wait(self, seconds=10) -> Status:
         result = None
+        if seconds is None:
+            seconds = 3600
         for _ in range(seconds):
             result = self.state()
             if result.queuemo is not None:
