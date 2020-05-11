@@ -7,5 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-queuemo==0.5.0
-viewo==0.13.0
+utila==1.21.1
+
+queuemo==0.5.2
+viewo==0.14.0
