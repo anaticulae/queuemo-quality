@@ -1,0 +1,91 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2020 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
+import collections
+import os
+import subprocess
+
+import utila
+
+Status = collections.namedtuple('Status', 'viewo, queuemo')
+
+
+class Locomotive:
+
+    def __init__(self, root: str, viewo_port: int, runtime: int = 1):
+        self.root = root
+        self.viewo_port = viewo_port
+        self.runtime = runtime
+        self.viewo = None
+        self.queuemo = None
+
+    def state(self) -> Status:
+        viewo = check_process(self.viewo)
+        queuemo = check_process(self.queuemo)
+        return Status(viewo=viewo, queuemo=queuemo)
+
+    def close(self) -> Status:
+        self.viewo.terminate()
+        self.queuemo.terminate()
+
+    def start(self):
+        assert self.viewo is None and self.queuemo is None
+
+        tmp = os.path.join(self.root, 'tmp')
+        os.makedirs(tmp)
+        todo = os.path.join(self.root, 'todo')
+        os.makedirs(todo)
+        ready = os.path.join(self.root, 'ready')
+        os.makedirs(ready)
+
+        env = dict(os.environ)
+        env['SHARED_SPACE'] = str(self.root)
+        env['SHARED_TODO'] = str(todo)
+        env['SHARED_READY'] = str(ready)
+        env['SHARED_TMP'] = str(tmp)
+
+        env['FLASK_APP'] = 'viewo'
+
+        cmd = f'python -m flask run -p {self.viewo_port}'
+        self.viewo = subprocess.Popen(cmd, env=env)
+        # ensure that process is started correctly
+        assert check_process(self.viewo) is None
+
+        cmd = f'queuemo --runtime={self.runtime}'
+        self.queuemo = subprocess.Popen(cmd, env=env)
+        # ensure that process is started correctly
+        assert check_process(self.queuemo) is None
+
+    def run(self, seconds=10) -> Status:
+        result = None
+        for _ in range(seconds):
+            result = self.state()
+            if result.queuemo is not None:
+                assert result.viewo is None, str(result)
+                self.close()
+                # update starte
+                result = self.state()
+                break
+        return result
+
+
+def create(root: str, viewo: int):
+    return Locomotive(root=root, viewo_port=viewo)
+
+
+def check_process(process) -> int:
+    try:
+        outs, errs = process.communicate(timeout=1.0)
+        if outs:
+            utila.info(outs)
+        if errs:
+            utila.info(errs)
+    except subprocess.TimeoutExpired:
+        pass
+    return process.returncode
