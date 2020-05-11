@@ -8,6 +8,8 @@
 # =============================================================================
 
 import os
+import subprocess
+import time
 
 import utila
 
@@ -18,7 +20,7 @@ PORT = 4444
 SERVER = 'http://localhost'
 
 
-def test_run_locomotive(testdir):
+def test_locomotive_run(testdir):
     root = testdir.tmpdir
     locomotive = train.loco.create(root, viewo=4444)
     locomotive.start()
@@ -46,3 +48,33 @@ def upload(file: str, server: str = SERVER, port: int = PORT):
     cmd = f'curl -F file=@{filename} {server}:{port}/upload'
     completed = utila.run(cmd, cwd=base)
     assert completed.returncode == utila.SUCCESS, str(completed)
+
+
+@utila.skip_longrun
+def test_cli(testdir):
+    port = 3500
+    source = tests.resources.MASTER72
+    workspace = str(testdir.tmpdir)
+
+    cmd = f'train --workspace {workspace} -j=1 -p={port} -r=1000'
+    process = subprocess.Popen(cmd)
+
+    # ensure correct startup
+    time.sleep(10.0)
+    returncode = train.loco.check_process(process)
+    assert returncode is None, returncode
+
+    # upload test file
+    upload(file=source, port=port)
+
+    # wait for finish processing
+    returncode = wait(process)
+    assert returncode == utila.SUCCESS, returncode
+
+
+def wait(process):
+    completed = train.loco.check_process(process)
+    while completed is None:
+        completed = train.loco.check_process(process)
+        time.sleep(1.0)
+    return completed
