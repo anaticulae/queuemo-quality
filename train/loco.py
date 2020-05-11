@@ -30,11 +30,17 @@ class Locomotive:
         queuemo = check_process(self.queuemo)
         return Status(viewo=viewo, queuemo=queuemo)
 
+    def started(self) -> bool:
+        completed = utila.run(
+            f'curl http://localhost:{self.viewo_port}', expect=None)
+        return completed.returncode == 0
+
     def close(self) -> Status:
         self.viewo.terminate()
         self.queuemo.terminate()
 
     def start(self):
+        assert not self.started(), 'already running'
         assert self.viewo is None and self.queuemo is None
 
         tmp = os.path.join(self.root, 'tmp')
