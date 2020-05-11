@@ -63,4 +63,9 @@ if __name__ == "__main__":
         packages=[
             'train',
         ],
+        entry_points={
+            'console_scripts': [
+                'train = train.cli:main',
+            ],
+        },
     )
