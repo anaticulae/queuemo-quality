@@ -83,8 +83,8 @@ class Locomotive:
         return result
 
 
-def create(root: str, viewo: int):
-    return Locomotive(root=root, viewo_port=viewo)
+def create(root: str, viewo: int, runtime: int = 1):
+    return Locomotive(root=root, viewo_port=viewo, runtime=runtime)
 
 
 def check_process(process) -> int:

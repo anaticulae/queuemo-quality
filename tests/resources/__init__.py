@@ -15,3 +15,5 @@ RESOURCES = os.path.join(train.ROOT, 'tests/resources')
 assert os.path.exists(RESOURCES), RESOURCES
 
 GENERATED = os.path.join(RESOURCES, 'generated')
+
+MASTER72 = os.path.join(RESOURCES, 'master/page_72_noimages_toc.pdf')
