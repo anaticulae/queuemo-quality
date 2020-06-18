@@ -51,8 +51,11 @@ def upload(file: str, server: str = SERVER, port: int = PORT):
 
 
 PARAMETER = [
-    pytest.param(item, port, id=utila.forward_slash(item))
-    for port, item in enumerate(power.PDF, start=3500)
+    pytest.param(
+        item,
+        port,
+        id=utila.simplify_testfile_names((power.REPOSITORY, item))[0],
+    ) for port, item in enumerate(power.PDF, start=3500)
 ]
 
 
