@@ -11,10 +11,10 @@ import os
 import subprocess
 import time
 
+import power
 import pytest
 import utila
 
-import tests.resources
 import train.loco
 
 PORT = 4444
@@ -37,7 +37,7 @@ def test_publish(testdir):
     locomotive = train.loco.create(root, viewo=port, runtime=10)
     locomotive.start()
 
-    upload(file=tests.resources.MASTER72)
+    upload(file=power.MASTER072_PDF)
 
     result = locomotive.wait(None)
     assert result.queuemo == 0, str(result)
@@ -52,14 +52,13 @@ def upload(file: str, server: str = SERVER, port: int = PORT):
 
 PARAMETER = [
     pytest.param(item, port, id=utila.forward_slash(item))
-    for port, item in enumerate(tests.resources.FILES, start=3500)
+    for port, item in enumerate(power.PDF, start=3500)
 ]
 
 
 @utila.skip_nightly
 @pytest.mark.parametrize('file, port', PARAMETER)
 def test_cli(file, port, testdir):
-    source = os.path.join(tests.resources.RESOURCES, file)
     workspace = str(testdir.tmpdir)
 
     cmd = f'train --workspace {workspace} -j=1 -p={port} -r=1000'
@@ -71,7 +70,7 @@ def test_cli(file, port, testdir):
     assert returncode is None, returncode
 
     # upload test file
-    upload(file=source, port=port)
+    upload(file=file, port=port)
 
     # wait for finish processing
     returncode = wait(process)
