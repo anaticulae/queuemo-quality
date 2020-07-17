@@ -11,6 +11,7 @@ import os
 import sys
 
 import utila
+import utilatest
 
 import train
 
@@ -23,6 +24,6 @@ def pytest_sessionstart(session):  # pylint:disable=W0613
         return
 
     single_test = '-k' in sys.argv
-    if not single_test and ('GENERATE' in os.environ or utila.test.LONGRUN):
+    if not single_test and ('GENERATE' in os.environ or utilatest.LONGRUN):
         utila.log('install requirements')
-        utila.clean_install(train.ROOT, train.PROCESS)
+        utilatest.clean_install(train.ROOT, train.PROCESS)

@@ -14,6 +14,7 @@ import time
 import power
 import pytest
 import utila
+import utilatest
 
 import train.loco
 
@@ -30,7 +31,7 @@ def test_locomotive_run(testdir):
     assert result.queuemo == 0, str(result)
 
 
-@utila.skip_longrun
+@utilatest.skip_longrun
 def test_publish(testdir):
     port = 4444
     root = testdir.tmpdir
@@ -54,12 +55,12 @@ PARAMETER = [
     pytest.param(
         item,
         port,
-        id=utila.simplify_testfile_names((power.REPOSITORY, item))[0],
+        id=utilatest.simplify_testfile_names((power.REPOSITORY, item))[0],
     ) for port, item in enumerate(power.PDF, start=3500)
 ]
 
 
-@utila.skip_nightly
+@utilatest.skip_nightly
 @pytest.mark.parametrize('file, port', PARAMETER)
 def test_cli(file, port, testdir):
     workspace = str(testdir.tmpdir)
