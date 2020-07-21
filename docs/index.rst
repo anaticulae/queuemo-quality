@@ -1,5 +1,5 @@
 Welcome to let the dice role
-=================================
+============================
 
 General
 -------
@@ -8,6 +8,7 @@ General
   :maxdepth: 1
 
   bugs
+  performance
 
 Progress
 --------
@@ -40,4 +41,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
