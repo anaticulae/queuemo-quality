@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.1.1
+
+### Feature
+
+* add performance page to judge current quality (e68983f864af)
+
 ## v0.1.0
 
 ### Feature
