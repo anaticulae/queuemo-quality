@@ -38,7 +38,7 @@ def test_publish(testdir):
     locomotive = train.loco.create(root, viewo=port, runtime=10)
     locomotive.start()
 
-    upload(file=power.MASTER072_PDF)
+    upload(file=power.HOMEWORK018_PDF)
 
     result = locomotive.wait(None)
     assert result.queuemo == 0, str(result)
