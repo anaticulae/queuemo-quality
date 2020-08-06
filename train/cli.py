@@ -31,6 +31,7 @@ def main():
             outputparameter=False,
             inputparameter=False,
             prefix=False,
+            verboseflag=True,
         ),
         version=train.__version__,
     )

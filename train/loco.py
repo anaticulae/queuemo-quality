@@ -24,6 +24,7 @@ class Locomotive:
             viewo_port: int,
             runtime: int = 1,
             jobs: int = 1,
+            verbose: bool = False,
     ):
         self.root = root
         self.viewo_port = viewo_port
@@ -31,6 +32,7 @@ class Locomotive:
         self.jobs = jobs
         self.viewo = None
         self.queuemo = None
+        self.verbose = verbose
 
     def state(self) -> Status:
         viewo = check_process(self.viewo)
@@ -57,6 +59,8 @@ class Locomotive:
         ready = os.path.join(self.root, 'ready')
         os.makedirs(ready)
 
+        silent = subprocess.PIPE if not self.verbose else None
+
         env = dict(os.environ)
         env['SHARED_SPACE'] = str(self.root)
         env['SHARED_TODO'] = str(todo)
@@ -66,12 +70,22 @@ class Locomotive:
         env['FLASK_APP'] = 'viewo'
 
         cmd = f'python -m flask run -p {self.viewo_port}'
-        self.viewo = subprocess.Popen(cmd, env=env)
+        self.viewo = subprocess.Popen(
+            cmd,
+            env=env,
+            stdout=silent,
+            stderr=silent,
+        )
         # ensure that process is started correctly
         assert check_process(self.viewo) is None
 
         cmd = f'queuemo --runtime={self.runtime} --jobs={self.jobs}'
-        self.queuemo = subprocess.Popen(cmd, env=env)
+        self.queuemo = subprocess.Popen(
+            cmd,
+            env=env,
+            stdout=silent,
+            stderr=silent,
+        )
         # ensure that process is started correctly
         assert check_process(self.queuemo) is None
 
@@ -91,7 +105,12 @@ class Locomotive:
 
 
 def create(root: str, viewo: int, runtime: int = 1):
-    return Locomotive(root=root, viewo_port=viewo, runtime=runtime)
+    return Locomotive(
+        root=root,
+        viewo_port=viewo,
+        runtime=runtime,
+        verbose=True,
+    )
 
 
 def check_process(process) -> int:
