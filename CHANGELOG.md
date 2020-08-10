@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.1.2
+
+### Feature
+
+* add verbose option to suppress process logging in default (1382bd015ce3)
+
 ## v0.1.1
 
 ### Feature
