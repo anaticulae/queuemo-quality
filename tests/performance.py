@@ -30,8 +30,9 @@ def run():
 
     for port, path in enumerate(TODO, start=4700):
         workspace = utila.tmpdir(configo.tmp())
-        utila.log(f'run performace for {path} in {workspace} on: {port}')
-        ready = tests.run(workspace, path, port=port)
+        utila.log(f'run performance for {path} in {workspace} on: {port}')
+        with utila.profile(path):
+            ready = tests.run(workspace, path, port=port)
         # load findings by page
         findings = protocol.findings_from_path(ready)
         # global finding list
