@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.1.3
+
+### Feature
+
+* add profiling step to determine document runtime (fdf3963e1575)
+
 ## v0.1.2
 
 ### Feature
