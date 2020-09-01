@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import hardcore
 import power
 import pytest
 import utilatest
@@ -49,6 +50,23 @@ PARAMETER = [
 @utilatest.skip_nightly
 @pytest.mark.parametrize('file, port', PARAMETER)
 def test_cli(file, port, testdir):
+    workspace = str(testdir.tmpdir)
+
+    tests.run(workspace, file, port)
+
+
+HARDCORE = [
+    pytest.param(
+        item,
+        port,
+        id=utilatest.simplify_testfile_names((hardcore.ROOT, item))[0],
+    ) for port, item in enumerate(hardcore.ALL, start=4000)
+]
+
+
+@utilatest.skip_nightly
+@pytest.mark.parametrize('file, port', HARDCORE)
+def test_hardcore(file, port, testdir):
     workspace = str(testdir.tmpdir)
 
     tests.run(workspace, file, port)
