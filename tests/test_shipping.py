@@ -51,7 +51,6 @@ PARAMETER = [
 @pytest.mark.parametrize('file, port', PARAMETER)
 def test_cli(file, port, testdir):
     workspace = str(testdir.tmpdir)
-
     tests.run(workspace, file, port)
 
 
@@ -68,5 +67,4 @@ HARDCORE = [
 @pytest.mark.parametrize('file, port', HARDCORE)
 def test_hardcore(file, port, testdir):
     workspace = str(testdir.tmpdir)
-
     tests.run(workspace, file, port)
