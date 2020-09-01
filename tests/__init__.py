@@ -29,7 +29,7 @@ def wait(process):
 
 def upload(file: str, server: str = SERVER, port: int = PORT):
     base, filename = os.path.split(file)
-    cmd = f'curl -F file=@{filename} {server}:{port}/upload'
+    cmd = f"curl -F file='@{filename}' {server}:{port}/upload"
     completed = utila.run(cmd, cwd=base)
     assert completed.returncode == utila.SUCCESS, str(completed)
 
