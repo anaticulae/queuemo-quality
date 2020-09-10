@@ -36,7 +36,12 @@ def upload(file: str, server: str = SERVER, port: int = PORT):
 
 def run(workspace, source, port=PORT) -> str:
     cmd = f'train --workspace {workspace} -j=1 -p={port} -r=1000'
-    process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+    try:
+        utila.log(cmd)
+        process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+    except FileNotFoundError:
+        utila.error('please install `train`')
+        exit(127)
 
     # ensure correct startup
     time.sleep(10.0)
