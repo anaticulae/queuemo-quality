@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.1.4
+
+### Fix
+
+* ensure to upload files with spaces correctly (a9defad23321)
+
 ## v0.1.3
 
 ### Feature
