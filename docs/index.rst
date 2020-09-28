@@ -26,7 +26,7 @@ Developer
 .. toctree::
   :maxdepth: 1
 
-  todo
+  developer/apps
 
 Modules
 --------------------
