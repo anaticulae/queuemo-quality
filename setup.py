@@ -66,6 +66,7 @@ if __name__ == "__main__":
         entry_points={
             'console_scripts': [
                 'train = train.cli:main',
+                'race = train.race:main',
             ],
         },
     )

@@ -1,6 +1,10 @@
 performance
 ===========
 
+Use `race` tool to compute current performance for the different
+resource packs. Run **race --second** to determine performance for second
+race.
+
 second race
 -----------
 

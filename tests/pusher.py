@@ -7,10 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-import sys
-
 import power
+
+import train.performance
 
 TODO = [
     power.BACHELOR051_PDF,
@@ -26,9 +25,5 @@ TODO = [
 ]
 
 if __name__ == "__main__":
-    # fix path setup to avoid importing tests package of other projects
-    sys.path.insert(0, os.path.abspath('.'))
-    import tests  # isort:skip pylint:disable=wrong-import-position
-
     for path in TODO:
-        tests.upload(path, port=5000)
+        train.performance.upload(path, port=5000)

@@ -12,8 +12,8 @@ import power
 import pytest
 import utilatest
 
-import tests
 import train.loco
+import train.performance
 
 
 def test_locomotive_run(testdir):
@@ -32,7 +32,7 @@ def test_publish(testdir):
     locomotive = train.loco.create(root, viewo=port, runtime=10)
     locomotive.start()
 
-    tests.upload(file=power.HOMEWORK018_PDF)
+    train.performance.upload(file=power.HOMEWORK018_PDF)
 
     result = locomotive.wait(None)
     assert result.queuemo == 0, str(result)
@@ -51,7 +51,7 @@ PARAMETER = [
 @pytest.mark.parametrize('file, port', PARAMETER)
 def test_cli(file, port, testdir):
     workspace = str(testdir.tmpdir)
-    tests.run(workspace, file, port)
+    train.performance.run(workspace, file, port)
 
 
 HARDCORE = [
@@ -67,4 +67,4 @@ HARDCORE = [
 @pytest.mark.parametrize('file, port', HARDCORE)
 def test_hardcore(file, port, testdir):
     workspace = str(testdir.tmpdir)
-    tests.run(workspace, file, port)
+    train.performance.run(workspace, file, port)
