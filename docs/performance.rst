@@ -1,6 +1,31 @@
 performance
 ===========
 
+second race
+-----------
+
+.. list-table::
+   :widths: 20, 20,20,20,20,20,20,20
+
+   * - version
+     - date
+     - master110
+     - bachelor128
+     - master31
+     - bachelor51
+     - sum
+     - improvement
+   * - v0.1.6
+     - 2020/09/28
+     - 2998
+     - 814
+     - 23/101(after fixing sections)
+     - 310
+     - 4223
+     -
+
+first race
+----------
 
 .. list-table::
    :widths: 20, 20,20,20,20,20,20,20
