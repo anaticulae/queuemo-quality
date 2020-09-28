@@ -8,7 +8,9 @@
 # =============================================================================
 
 import power
+import utila
 
+import train
 import train.performance
 
 TODO = [
@@ -24,6 +26,10 @@ TODO = [
     power.MASTER155_PDF,
 ]
 
-if __name__ == "__main__":
+
+@utila.saveme
+def main():
     for path in TODO:
-        train.performance.upload(path, port=5000)
+        utila.log(f'upload: {path}')
+        train.performance.upload(path, port=train.DEV_SERVER_PORT)
+    utila.log('done')

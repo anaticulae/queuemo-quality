@@ -1,5 +1,4 @@
 #! /usr/bin/bash
 
-python tests/pusher.py
-
-queuemo --runtime 20 --verbose
+# upload documents and run analysis
+pusher && queuemo --runtime 20 --verbose
