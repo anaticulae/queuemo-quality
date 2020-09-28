@@ -13,3 +13,5 @@ __version__ = '0.1.6'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PROCESS = 'train'
+
+DEV_SERVER_PORT = 5000

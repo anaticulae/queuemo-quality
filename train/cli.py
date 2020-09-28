@@ -17,14 +17,16 @@ import train.loco
 
 @utila.saveme
 def main():
-    # yapf:disable
     commands = [
-        utila.NumberedParameter(shortcut='p', message='used port', default=5000),
+        utila.NumberedParameter(
+            shortcut='p',
+            message='used port',
+            default=train.DEV_SERVER_PORT,
+        ),
         utila.NumberedParameter(shortcut='r', message='runtime', default=3600),
         utila.NumberedParameter(shortcut='j', message='jobs', default=1000),
         utila.Parameter(longcut='workspace', message='workspace'),
     ]
-    # yapf:enable
     parser = utila.cli.create_parser(
         todo=commands,
         config=utila.ParserConfiguration(
