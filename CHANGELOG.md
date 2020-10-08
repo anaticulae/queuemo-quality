@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.1.7
+
+### Feature
+
+* replace pusher with separate python application (8c4e9a025ebe)
+* replace performance by independent race tool (17c33bbfa083)
+* add pusher to upload a bunch of files (fddd72c4e777)
+
+### Documentation
+
+* add overview of provided apps (7b4b2e86ff65)
+
 ## v0.1.6
 
 ## v0.1.5
