@@ -29,12 +29,20 @@ SECOND = [
     power.BACHELOR051_PDF,
 ]
 
+THIRD = [
+    power.MASTER072_PDF,
+    power.MASTER089_PDF,
+    power.MASTER098_PDF,
+    power.MASTER099_PDF,
+]
+
 
 @utila.saveme
 def main():
     commands = [
         utila.Flag(longcut='first'),
         utila.Flag(longcut='second'),
+        utila.Flag(longcut='third'),
     ]
     parser = utila.cli.create_parser(
         todo=commands,
@@ -51,6 +59,7 @@ def main():
 
     first = args.get('first', False)
     second = args.get('second', False)
+    third = args.get('third', False)
 
     if first:
         run(FIRST, start=4700)
@@ -58,7 +67,10 @@ def main():
     if second:
         run(SECOND, start=4710)
 
-    if not any((first, second)):
+    if third:
+        run(THIRD, start=4720)
+
+    if not any((first, second, third)):
         parser.print_usage()
         exit(utila.FAILURE)
     exit(utila.SUCCESS)
