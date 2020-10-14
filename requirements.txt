@@ -9,5 +9,5 @@
 
 utila==2.12.0
 
-queuemo==1.2.1
-viewo==1.3.0
+queuemo==1.2.2
+viewo==1.4.1
