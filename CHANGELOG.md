@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.1.8
+
+### Feature
+
+* add third race with ancient pdf files (47b488bb1431)
+
 ## v0.1.7
 
 ### Feature
