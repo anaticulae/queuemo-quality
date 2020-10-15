@@ -7,6 +7,29 @@ Use :ref:`race<apps>` tool to compute current performance for the different
 resource packs. Run **race --second** to determine performance for second
 race.
 
+third race
+----------
+
+.. list-table::
+   :widths: 20, 20,20,20,20,20,20,20
+
+   * - version
+     - date
+     - master72
+     - master89
+     - master98
+     - master99
+     - sum
+     - improvement
+   * - v0.1.8
+     - 2020/09/10
+     - 72
+     - 89
+     - 136
+     - 340
+     -
+     - 637
+
 second race
 -----------
 
