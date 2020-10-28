@@ -54,12 +54,13 @@ def test_cli(file, port, testdir):
     train.performance.run(workspace, file, port)
 
 
+ALL = hardcore.F0 + hardcore.F50 + hardcore.F100 + hardcore.F200 + hardcore.F300
 HARDCORE = [
     pytest.param(
         item,
         port,
         id=utilatest.simplify_testfile_names((hardcore.ROOT, item))[0],
-    ) for port, item in enumerate(hardcore.ALL, start=4000)
+    ) for port, item in enumerate(ALL, start=4000)
 ]
 
 
