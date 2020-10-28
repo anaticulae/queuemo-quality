@@ -19,7 +19,7 @@ FIRST = [
     power.MASTER098_PDF,
     power.MASTER116_PDF,
     power.BACHELOR090_PDF,
-    power.HOMEWORK025_PDF,
+    power.HOME025_PDF,
 ]
 
 SECOND = [
