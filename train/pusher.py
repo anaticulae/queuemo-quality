@@ -31,5 +31,5 @@ TODO = [
 def main():
     for path in TODO:
         utila.log(f'upload: {path}')
-        train.performance.upload(path, port=train.DEV_SERVER_PORT)
+        train.performance.upload(path, port=train.DEV_SERVER_PORT, public=True)
     utila.log('done')

@@ -41,7 +41,9 @@ class Locomotive:
 
     def started(self) -> bool:
         completed = utila.run(
-            f'curl http://localhost:{self.viewo_port}', expect=None)
+            f'curl http://localhost:{self.viewo_port}',
+            expect=None,
+        )
         return completed.returncode == 0
 
     def close(self) -> Status:

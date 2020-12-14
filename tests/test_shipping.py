@@ -25,14 +25,15 @@ def test_locomotive_run(testdir):
     assert result.queuemo == 0, str(result)
 
 
+@pytest.mark.parametrize('public', [True, False])
 @utilatest.skip_longrun
-def test_publish(testdir):
-    port = 4444
+def test_publish(public, testdir):
+    port = 4444 if public else 4445
     root = testdir.tmpdir
     locomotive = train.loco.create(root, viewo=port, runtime=10)
     locomotive.start()
 
-    train.performance.upload(file=power.HOME018_PDF)
+    train.performance.upload(file=power.HOME018_PDF, public=public, port=port)
 
     result = locomotive.wait(None)
     assert result.queuemo == 0, str(result)

@@ -27,9 +27,23 @@ def wait(process):
     return completed
 
 
-def upload(file: str, server: str = SERVER, port: int = PORT):
+def upload(
+        file: str,
+        server: str = SERVER,
+        port: int = PORT,
+        public: bool = False,
+):
+    """\
+    Args:
+        file(str): file upload source
+        server(str): ip adress
+        port(int): server port
+        public(bool): make document accessible by public user
+    """
     base, filename = os.path.split(file)
-    cmd = f'curl -F "file=@{filename}" {server}:{port}/api/v0/documents'
+    public = '?public=True' if public else ''
+    api = f'{server}:{port}/api/v0/documents{public}'
+    cmd = f'curl -F "file=@{filename}" {api}'
     completed = utila.run(cmd, cwd=base)
     assert completed.returncode == utila.SUCCESS, str(completed)
 
@@ -49,7 +63,7 @@ def run(workspace, source, port=PORT) -> str:
     assert returncode is None, returncode
 
     # upload test file
-    upload(file=source, port=port)
+    upload(file=source, port=port, public=True)
 
     # wait for finish processing
     returncode = wait(process)
