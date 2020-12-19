@@ -26,7 +26,7 @@ def test_locomotive_run(testdir):
 
 
 @pytest.mark.parametrize('public', [True, False])
-@utilatest.skip_longrun
+@utilatest.nightly
 def test_publish(public, testdir):
     port = 4444 if public else 4445
     root = testdir.tmpdir
