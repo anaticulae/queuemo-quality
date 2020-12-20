@@ -24,14 +24,14 @@ def main():
             default=train.DEV_SERVER_PORT,
         ),
         utila.NumberedParameter(shortcut='r', message='runtime', default=3600),
-        utila.NumberedParameter(shortcut='j', message='jobs', default=1000),
         utila.Parameter(longcut='workspace', message='workspace'),
     ]
     parser = utila.cli.create_parser(
         todo=commands,
         config=utila.ParserConfiguration(
-            outputparameter=False,
+            multiprocessed=True,
             inputparameter=False,
+            outputparameter=False,
             prefix=False,
             verboseflag=True,
         ),
@@ -41,7 +41,7 @@ def main():
 
     port = int(args['p'])
     runtime = int(args['r'])
-    jobs = int(args['j'])
+    jobs = int(args['job'])
     workspace = os.getcwd() if args['workspace'] is None else args['workspace']
     if not os.path.exists(workspace):
         utila.error(f'workspace does not exists: {workspace}')
