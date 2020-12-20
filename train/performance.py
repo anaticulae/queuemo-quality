@@ -48,8 +48,11 @@ def upload(
     assert completed.returncode == utila.SUCCESS, str(completed)
 
 
-def run(workspace, source, port=PORT) -> str:
-    cmd = f'train --workspace {workspace} -j=1 -p={port} -r=1000'
+TWO_HOURS = 3600 * 2
+
+
+def run(workspace, source, port=PORT, runtime=TWO_HOURS) -> str:
+    cmd = f'train --workspace {workspace} -j=1 -p={port} -r={runtime}'
     try:
         utila.log(cmd)
         process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
