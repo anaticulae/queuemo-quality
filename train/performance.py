@@ -55,7 +55,11 @@ def run(workspace, source, port=PORT, runtime=TWO_HOURS) -> str:
     cmd = f'train --workspace {workspace} -j=1 -p={port} -r={runtime}'
     try:
         utila.log(cmd)
-        process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+        process = subprocess.Popen(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
     except FileNotFoundError:
         utila.error('install `train` please')
         exit(127)
