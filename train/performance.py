@@ -64,8 +64,8 @@ def run(workspace, source, port=PORT, runtime=TWO_HOURS) -> str:
         utila.error('install `train` please')
         exit(127)
 
-    # ensure correct startup
-    time.sleep(10.0)
+    waitforstartup(port)
+
     returncode = train.loco.check_process(process)
     assert returncode is None, returncode
 
@@ -80,3 +80,16 @@ def run(workspace, source, port=PORT, runtime=TWO_HOURS) -> str:
     count = utila.file_count(ready)
     assert count >= 15, ready
     return ready
+
+
+def waitforstartup(port: int):
+    cmd = f'curl http://localhost:{port}'
+    # ensure correct startup
+    for _ in range(100):
+        # curl till server is online
+        completed = utila.run(cmd, expect=None)
+        if completed.returncode == utila.SUCCESS:
+            break
+    else:
+        utila.error(f'timeout: {cmd}')
+        exit(utila.FAILURE)
