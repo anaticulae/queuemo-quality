@@ -18,7 +18,7 @@ import train.performance
 
 def test_locomotive_run(testdir):
     root = testdir.tmpdir
-    locomotive = train.loco.create(root, viewo=4444)
+    locomotive = train.loco.create(root, port=4444)
     locomotive.start()
 
     result = locomotive.wait()
@@ -30,7 +30,7 @@ def test_locomotive_run(testdir):
 def test_publish(public, testdir):
     port = 4444 if public else 4445
     root = testdir.tmpdir
-    locomotive = train.loco.create(root, viewo=port, runtime=10)
+    locomotive = train.loco.create(root, port=port, runtime=10)
     locomotive.start()
 
     train.performance.upload(file=power.HOME018_PDF, public=public, port=port)

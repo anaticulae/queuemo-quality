@@ -49,7 +49,7 @@ def main():
 
     loco = train.loco.Locomotive(
         root=workspace,
-        viewo_port=port,
+        port=port,
         runtime=runtime,
         jobs=jobs,
     )

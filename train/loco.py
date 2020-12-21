@@ -21,13 +21,13 @@ class Locomotive:
     def __init__(
             self,
             root: str,
-            viewo_port: int,
+            port: int,
             runtime: int = 1,
             jobs: int = 1,
             verbose: bool = False,
     ):
         self.root = root
-        self.viewo_port = viewo_port
+        self.port = port
         self.runtime = runtime
         self.jobs = jobs
         self.viewo = None
@@ -41,7 +41,7 @@ class Locomotive:
 
     def started(self) -> bool:
         completed = utila.run(
-            f'curl http://localhost:{self.viewo_port}',
+            f'curl http://localhost:{self.port}',
             expect=None,
         )
         return completed.returncode == 0
@@ -71,7 +71,7 @@ class Locomotive:
 
         env['FLASK_APP'] = 'viewo.__main__'
 
-        cmd = f'python -m flask run -p {self.viewo_port}'
+        cmd = f'python -m flask run -p {self.port}'
         self.viewo = subprocess.Popen(
             cmd,
             env=env,
@@ -106,10 +106,10 @@ class Locomotive:
         return result
 
 
-def create(root: str, viewo: int, runtime: int = 1):
+def create(root: str, port: int, runtime: int = 1):
     return Locomotive(
         root=root,
-        viewo_port=viewo,
+        port=port,
         runtime=runtime,
         verbose=True,
     )
