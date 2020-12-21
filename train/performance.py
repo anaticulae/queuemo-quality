@@ -72,7 +72,7 @@ def run(workspace, source, port=PORT, runtime=TWO_HOURS) -> str:
     # upload test file
     upload(file=source, port=port, public=True)
 
-    # wait for finish processing
+    # wait for finished process
     returncode = wait(process)
     assert returncode == utila.SUCCESS, returncode
 
