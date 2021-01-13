@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.2.0
+
+### Feature
+
+* improve server startup check (f802037b2697)
+* use public flag to create jobs as public jobs (6f30195d96a4)
+
+### Fix
+
+* pass error pipe to logging (3637561eb343)
+
 ## v0.1.9
 
 ## v0.1.8
