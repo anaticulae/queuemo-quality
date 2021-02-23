@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import sys
+
 import power
 import utila
 
@@ -29,7 +31,12 @@ TODO = [
 
 @utila.saveme
 def main():
-    for path in TODO:
+    todo = TODO
+    if 'all' in sys.argv:
+        todo = power.PDF
+        utila.log(f'publish all docs: {len(TODO)}')
+
+    for path in todo:
         utila.log(f'upload: {path}')
         train.performance.upload(path, port=train.DEV_SERVER_PORT, public=True)
     utila.log('done')
