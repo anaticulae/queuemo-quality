@@ -34,7 +34,7 @@ def main():
     todo = TODO
     if 'all' in sys.argv:
         todo = power.PDF
-        utila.log(f'publish all docs: {len(TODO)}')
+        utila.log(f'publish all docs: {len(todo)}')
 
     for path in todo:
         utila.log(f'upload: {path}')
