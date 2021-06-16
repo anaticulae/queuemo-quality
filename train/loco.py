@@ -19,12 +19,12 @@ Status = collections.namedtuple('Status', 'viewo, queuemo')
 class Locomotive:
 
     def __init__(
-            self,
-            root: str,
-            port: int,
-            runtime: int = 1,
-            jobs: int = 1,
-            verbose: bool = False,
+        self,
+        root: str,
+        port: int,
+        runtime: int = 1,
+        jobs: int = 1,
+        verbose: bool = False,
     ):
         self.root = root
         self.port = port

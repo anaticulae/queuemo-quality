@@ -28,10 +28,10 @@ def wait(process):
 
 
 def upload(
-        file: str,
-        server: str = SERVER,
-        port: int = PORT,
-        public: bool = False,
+    file: str,
+    server: str = SERVER,
+    port: int = PORT,
+    public: bool = False,
 ):
     """\
     Args:
