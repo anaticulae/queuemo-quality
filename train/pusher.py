@@ -31,12 +31,29 @@ TODO = [
 
 @utila.saveme
 def main():
-    todo = TODO
+    bachelor, master, diss, docus, todo = (
+        'bachelor' in sys.argv,
+        'master' in sys.argv,
+        'diss' in sys.argv,
+        'docs' in sys.argv,
+        'todo' in sys.argv,
+    )
+    jobs = []
+    if bachelor:
+        jobs.extend(power.BACHELORS)
+    if master:
+        jobs.extend(power.MASTERS)
+    if diss:
+        jobs.extend(power.DISSS)
+    if docus:
+        jobs.extend(power.DOCUS)
+    if todo:
+        jobs.extend(TODO)
     if 'all' in sys.argv:
-        todo = power.PDF
-        utila.log(f'publish all docs: {len(todo)}')
-
-    for path in todo:
+        jobs = power.PDF
+        utila.log(f'publish all docs: {len(jobs)}')
+    for path in jobs:
         utila.log(f'upload: {path}')
         train.performance.upload(path, port=train.DEV_SERVER_PORT, public=True)
     utila.log('done')
+    sys.exit(utila.SUCCESS)
