@@ -9,6 +9,7 @@
 
 import os
 import subprocess
+import sys
 import time
 
 import utila
@@ -55,26 +56,24 @@ def run(workspace, source, port=PORT, runtime=TWO_HOURS) -> str:
     cmd = f'train --workspace {workspace} -j=1 -p={port} -r={runtime}'
     try:
         utila.log(cmd)
-        process = subprocess.Popen(
-            cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-        )
+        with subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+        ) as process:
+            waitforstartup(port)
+            returncode = train.loco.check_process(process)
+            assert returncode is None, returncode
+
+            # upload test file
+            upload(file=source, port=port, public=True)
+
+            # wait for finished process
+            returncode = wait(process)
+            assert returncode == utila.SUCCESS, returncode
     except FileNotFoundError:
         utila.error('install `train` please')
-        exit(127)
-
-    waitforstartup(port)
-
-    returncode = train.loco.check_process(process)
-    assert returncode is None, returncode
-
-    # upload test file
-    upload(file=source, port=port, public=True)
-
-    # wait for finished process
-    returncode = wait(process)
-    assert returncode == utila.SUCCESS, returncode
+        sys.exit(127)
 
     ready = os.path.join(workspace, 'ready')
     count = utila.file_count(ready)

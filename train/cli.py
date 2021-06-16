@@ -8,6 +8,7 @@
 # =============================================================================
 
 import os
+import sys
 
 import utila
 
@@ -45,7 +46,7 @@ def main():
     workspace = os.getcwd() if args['workspace'] is None else args['workspace']
     if not os.path.exists(workspace):
         utila.error(f'workspace does not exists: {workspace}')
-        exit(utila.FAILURE)
+        sys.exit(utila.FAILURE)
 
     loco = train.loco.Locomotive(
         root=workspace,
@@ -55,8 +56,8 @@ def main():
     )
     if loco.started():
         utila.error(f'server already started: {port} | {workspace}')
-        exit(utila.FAILURE)
+        sys.exit(utila.FAILURE)
 
     loco.start()
     loco.wait(runtime)
-    exit(utila.SUCCESS)
+    sys.exit(utila.SUCCESS)

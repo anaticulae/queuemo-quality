@@ -72,24 +72,24 @@ class Locomotive:
         env['FLASK_APP'] = 'viewo.__main__'
 
         cmd = f'python -m flask run -p {self.port}'
-        self.viewo = subprocess.Popen(
-            cmd,
-            env=env,
-            stdout=silent,
-            stderr=silent,
-        )
-        # ensure that process is started correctly
-        assert check_process(self.viewo) is None
+        with subprocess.Popen(
+                cmd,
+                env=env,
+                stdout=silent,
+                stderr=silent,
+        ) as self.viewo:
+            # ensure that process is started correctly
+            assert check_process(self.viewo) is None
 
         cmd = f'queuemo --runtime={self.runtime} --jobs={self.jobs}'
-        self.queuemo = subprocess.Popen(
-            cmd,
-            env=env,
-            stdout=silent,
-            stderr=silent,
-        )
-        # ensure that process is started correctly
-        assert check_process(self.queuemo) is None
+        with subprocess.Popen(
+                cmd,
+                env=env,
+                stdout=silent,
+                stderr=silent,
+        ) as self.queuemo:
+            # ensure that process is started correctly
+            assert check_process(self.queuemo) is None
 
     def wait(self, seconds=10) -> Status:
         result = None

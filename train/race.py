@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import sys
+
 import configo
 import power
 import protocol
@@ -72,8 +74,8 @@ def main():
 
     if not any((first, second, third)):
         parser.print_usage()
-        exit(utila.FAILURE)
-    exit(utila.SUCCESS)
+        sys.exit(utila.FAILURE)
+    sys.exit(utila.SUCCESS)
 
 
 def run(todo, start: int = 4700):
