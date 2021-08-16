@@ -17,8 +17,8 @@ import train.performance
 
 TODO = [
     power.BACHELOR051_PDF,
+    power.BACHELOR109_PDF,
     power.BACHELOR128_PDF,
-    power.BACHELOR200_PDF,
     power.BACHELOR241_PDF,
     power.MASTER031_PDF,
     power.MASTER075_PDF,
