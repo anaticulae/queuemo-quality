@@ -35,20 +35,33 @@ def main():
         'bachelor' in sys.argv,
         'master' in sys.argv,
         'diss' in sys.argv,
-        'docs' in sys.argv,
+        'docu' in sys.argv,
         'todo' in sys.argv,
     )
+    minimal = 'minimal' in sys.argv
     jobs = []
-    if bachelor:
-        jobs.extend(power.BACHELORS)
-    if master:
-        jobs.extend(power.MASTERS)
-    if diss:
-        jobs.extend(power.DISSS)
-    if docus:
-        jobs.extend(power.DOCUS)
-    if todo:
-        jobs.extend(TODO)
+    for resources, selected in zip(
+        (
+            power.BACHELORS,
+            power.MASTERS,
+            power.DISSS,
+            power.DOCUS,
+            TODO,
+        ),
+        (
+            bachelor,
+            master,
+            diss,
+            docus,
+            todo,
+        ),
+    ):
+        if not selected:
+            continue
+        if minimal:
+            jobs.extend(resources[0:10])
+        else:
+            jobs.extend(resources)
     if 'all' in sys.argv:
         jobs = power.PDF
         utila.log(f'publish all docs: {len(jobs)}')
