@@ -91,4 +91,4 @@ def waitforstartup(port: int):
             break
     else:
         utila.error(f'timeout: {cmd}')
-        exit(utila.FAILURE)
+        sys.exit(utila.FAILURE)
