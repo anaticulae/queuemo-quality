@@ -31,11 +31,12 @@ TODO = [
 
 @utila.saveme
 def main():
-    bachelor, master, diss, docus, todo = (
+    bachelor, master, diss, docus, paper, todo = (
         'bachelor' in sys.argv,
         'master' in sys.argv,
         'diss' in sys.argv,
         'docu' in sys.argv,
+        'paper' in sys.argv,
         'todo' in sys.argv,
     )
     minimal = 'minimal' in sys.argv
@@ -46,6 +47,7 @@ def main():
             power.MASTERS,
             power.DISSS,
             power.DOCUS,
+            power.PAPERS,
             TODO,
         ),
         (
@@ -53,6 +55,7 @@ def main():
             master,
             diss,
             docus,
+            paper,
             todo,
         ),
     ):
