@@ -44,7 +44,7 @@ class Locomotive:
             f'curl http://localhost:{self.port}',
             expect=None,
         )
-        return completed.returncode == 0
+        return not completed.returncode
 
     def close(self) -> Status:
         self.viewo.terminate()

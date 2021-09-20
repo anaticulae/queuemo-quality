@@ -22,7 +22,7 @@ def test_locomotive_run(testdir):
     locomotive.start()
 
     result = locomotive.wait()
-    assert result.queuemo == 0, str(result)
+    assert not result.queuemo, str(result)
 
 
 @pytest.mark.parametrize('public', [True, False])
@@ -36,7 +36,7 @@ def test_publish(public, testdir):
     train.performance.upload(file=power.HOME018_PDF, public=public, port=port)
 
     result = locomotive.wait(None)
-    assert result.queuemo == 0, str(result)
+    assert not result.queuemo, str(result)
 
 
 PARAMETER = [
