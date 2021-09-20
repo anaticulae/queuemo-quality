@@ -64,10 +64,8 @@ def run(workspace, source, port=PORT, runtime=TWO_HOURS) -> str:
             waitforstartup(port)
             returncode = train.loco.check_process(process)
             assert returncode is None, returncode
-
             # upload test file
             upload(file=source, port=port, public=True)
-
             # wait for finished process
             returncode = wait(process)
             assert returncode == utila.SUCCESS, returncode
