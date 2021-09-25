@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import re
 import sys
 
 import power
@@ -34,12 +35,25 @@ def main():
     argv = sys.argv
     jobs = []
     jobs.extend(select_doctype(argv))
+    jobs.extend(select_single(argv))
     if 'all' in sys.argv:
         jobs = power.PDF
         utila.log(f'publish all docs: {len(jobs)}')
     upload(jobs)
     utila.log('done')
     sys.exit(utila.SUCCESS)
+
+
+SINGLE = r'\w+\d{3}'
+
+
+def select_single(argv):
+    jobs = []
+    singles = [re.search(SINGLE, str(item)) for item in argv]
+    singles = utila.notnone(singles)
+    singles = [utila.extract_match(item) for item in singles]
+    jobs = [item for item in power.PDF if any(it in item for it in singles)]
+    return jobs
 
 
 def select_doctype(argv):
