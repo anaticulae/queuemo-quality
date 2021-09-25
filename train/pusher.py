@@ -31,15 +31,27 @@ TODO = [
 
 @utila.saveme
 def main():
+    argv = sys.argv
+    jobs = []
+    jobs.extend(select_doctype(argv))
+    if 'all' in sys.argv:
+        jobs = power.PDF
+        utila.log(f'publish all docs: {len(jobs)}')
+    upload(jobs)
+    utila.log('done')
+    sys.exit(utila.SUCCESS)
+
+
+def select_doctype(argv):
     bachelor, master, diss, docus, paper, todo = (
-        'bachelor' in sys.argv,
-        'master' in sys.argv,
-        'diss' in sys.argv,
-        'docu' in sys.argv,
-        'paper' in sys.argv,
-        'todo' in sys.argv,
+        'bachelor' in argv,
+        'master' in argv,
+        'diss' in argv,
+        'docu' in argv,
+        'paper' in argv,
+        'todo' in argv,
     )
-    minimal = 'minimal' in sys.argv
+    minimal = 'minimal' in argv
     jobs = []
     for resources, selected in zip(
         (
@@ -65,11 +77,10 @@ def main():
             jobs.extend(resources[0:10])
         else:
             jobs.extend(resources)
-    if 'all' in sys.argv:
-        jobs = power.PDF
-        utila.log(f'publish all docs: {len(jobs)}')
+    return jobs
+
+
+def upload(jobs):
     for path in jobs:
         utila.log(f'upload: {path}')
         train.performance.upload(path, port=train.DEV_SERVER_PORT, public=True)
-    utila.log('done')
-    sys.exit(utila.SUCCESS)
