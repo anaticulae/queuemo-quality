@@ -2,6 +2,25 @@
 
 Every noteable change is logged here.
 
+## v0.3.0
+
+### Feature
+
+* add option to upload single files (55712ae965eb)
+* add cli option to pusher papers (f5ea0f2df85c)
+* add minimal option to upload fewer documents (4ee5c84103b0)
+* add more options to pusher to distinguish uploads (c45ead449912)
+* add `all` option to push complete repository (8e11bfa9f875)
+
+### Fix
+
+* fix renaming (ac978327904a)
+* fix count of uploaded items (dd7696875d83)
+
+### Documentation
+
+* Happy New Year! (749df4856dfd)
+
 ## v0.2.0
 
 ### Feature
