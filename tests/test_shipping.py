@@ -15,12 +15,13 @@ import utilatest
 import train.loco
 import train.performance
 
-# def test_locomotive_run(testdir):
-#     root = testdir.tmpdir
-#     locomotive = train.loco.create(root, port=4444)
-#     locomotive.start()
-#     result = locomotive.wait()
-#     assert not result.queuemo, str(result)
+
+def test_locomotive_run(testdir):
+    root = testdir.tmpdir
+    locomotive = train.loco.create(root, port=train.performance.PORT)
+    locomotive.start()
+    result = locomotive.wait()
+    assert not result.queuemo, str(result)
 
 
 @pytest.mark.parametrize('public', [True, False])
