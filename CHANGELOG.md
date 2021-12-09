@@ -92,4 +92,3 @@ Every noteable change is logged here.
 * add locomotive to simplify publishing (d084c89f6f89)
 
 ## v0.0.0 Initial release
-
