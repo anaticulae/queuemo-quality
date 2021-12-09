@@ -9,7 +9,7 @@
 
 import collections
 import os
-import subprocess
+import subprocess  # nosec
 
 import utila
 
@@ -74,7 +74,7 @@ class Locomotive:
         cmd = f'python -m flask run -p {self.port}'
         # HINT: DO NOT USE WITH TO AVOID WAITING PROBLEM
         # pylint:disable=R1732
-        self.viewo = subprocess.Popen(
+        self.viewo = subprocess.Popen(  # nosec
             cmd,
             env=env,
             stdout=silent,
@@ -83,7 +83,7 @@ class Locomotive:
         # ensure that process is started correctly
         assert check_process(self.viewo) is None
         cmd = f'queuemo --runtime={self.runtime} --jobs={self.jobs}'
-        self.queuemo = subprocess.Popen(
+        self.queuemo = subprocess.Popen(  # nosec
             cmd,
             env=env,
             stdout=silent,
