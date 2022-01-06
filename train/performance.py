@@ -33,6 +33,7 @@ def upload(
     server: str = SERVER,
     port: int = PORT,
     public: bool = False,
+    verbose: bool = False,
 ):
     """\
     Args:
@@ -40,13 +41,20 @@ def upload(
         server(str): ip adress
         port(int): server port
         public(bool): make document accessible by public user
+        verbose(bool): if True log curl invocation
     """
     base, filename = os.path.split(file)
     public = '?public=True' if public else ''
     api = f'{server}:{port}/api/v0/documents{public}'
     cmd = f'curl -F "file=@{filename}" {api}'
-    completed = utila.run(cmd, cwd=base)
-    assert completed.returncode == utila.SUCCESS, str(completed)
+    if verbose:
+        utila.log(cmd)
+    completed = utila.run(cmd, cwd=base, expect=None)
+    if completed.returncode:
+        utila.error(cmd)
+        utila.error(completed.stderr)
+        utila.error('check connection')
+        sys.exit(utila.FAILURE)
 
 
 TWO_HOURS = 3600 * 2
