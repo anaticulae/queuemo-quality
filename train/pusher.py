@@ -32,16 +32,52 @@ TODO = [
 
 @utila.saveme
 def main():
+    # TODO: CONVERT TO REAL CLI TO EASE EXTENDING
     argv = sys.argv
     jobs = []
     jobs.extend(select_doctype(argv))
     jobs.extend(select_single(argv))
-    if 'all' in sys.argv:
-        jobs = power.PDF
-        utila.log(f'publish all docs: {len(jobs)}')
+    for method in (isall, isnewst, isoldest):
+        selected = method(sys.argv)
+        if not selected:
+            continue
+        jobs = selected
+        break
     upload(jobs)
     utila.log('done')
     sys.exit(utila.SUCCESS)
+
+
+def isall(argv) -> list:
+    if not 'all' in argv:
+        return []
+    jobs = power.PDF
+    utila.log(f'publish all docs: {len(jobs)}')
+    return jobs
+
+
+def isnewst(argv) -> list:
+    try:
+        pos = argv.index('newest')
+    except ValueError:
+        return []
+    try:
+        jobs = newest(int(argv[pos + 1]))
+    except IndexError:
+        jobs = newest()
+    return jobs
+
+
+def isoldest(argv) -> list:
+    try:
+        pos = argv.index('oldest')
+    except ValueError:
+        return []
+    try:
+        jobs = oldest(int(argv[pos + 1]))
+    except IndexError:
+        jobs = oldest()
+    return jobs
 
 
 SINGLE = re.compile(r'\w+\d{3}')
@@ -98,3 +134,21 @@ def upload(jobs):
     for path in jobs:
         utila.log(f'upload: {path}')
         train.performance.upload(path, port=train.DEV_SERVER_PORT, public=True)
+
+
+def newest(count: int = 10) -> list:
+    """\
+    >>> assert len(newest(10)) == 10
+    """
+    files = sorted(power.PDF, key=utila.file_age)
+    result = files[0:count]
+    return result
+
+
+def oldest(count: int = 10) -> list:
+    """\
+    >>> assert len(oldest(5)) == 5
+    """
+    files = sorted(power.PDF, key=utila.file_age, reverse=True)
+    result = files[0:count]
+    return result
