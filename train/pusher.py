@@ -44,12 +44,12 @@ def main():
     sys.exit(utila.SUCCESS)
 
 
-SINGLE = r'\w+\d{3}'
+SINGLE = re.compile(r'\w+\d{3}')
 
 
 def select_single(argv):
     jobs = []
-    singles = [re.search(SINGLE, str(item)) for item in argv]
+    singles = [SINGLE.search(str(item)) for item in argv]
     singles = utila.notnone(singles)
     singles = [utila.extract_match(item) for item in singles]
     jobs = [item for item in power.PDF if any(it in item for it in singles)]
