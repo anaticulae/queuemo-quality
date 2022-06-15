@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import re
 import sys
 
 import power
@@ -80,7 +79,11 @@ def isoldest(argv) -> list:
     return jobs
 
 
-SINGLE = re.compile(r'\w+\d{3}')
+SINGLE = utila.compiles(r"""
+    \w+         # filename
+    \d{3}       # number
+    \w?         # char separator
+""")
 
 
 def select_single(argv):
