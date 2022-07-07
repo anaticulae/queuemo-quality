@@ -88,7 +88,7 @@ class Locomotive:
             stderr=silent,
         )
         # ensure that process is started correctly
-        assert check_process(self.queuemo) is None
+        assert check_process(self.queuemo) is None  # TODO: VERIFY THIS
 
     def wait(self, seconds=10) -> Status:
         result = None
