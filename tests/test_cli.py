@@ -22,7 +22,7 @@ PARAMETER = [
 ]
 
 
-@utilatest.skip_nightly
+@utilatest.nightly
 @pytest.mark.parametrize('file, port', PARAMETER)
 def test_cli(file, port, testdir):
     workspace = str(testdir.tmpdir)
