@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import time
+
 import utila
 import utilatest
 
@@ -36,6 +38,8 @@ def test_pusher_cli(testdir, freeport, monkeypatch):
     locomotive.close()
     # wait for shutdown
     locomotive.wait()
+    # wait for publish # TODO: IMPROVE LATER
+    time.sleep(5.0)
     count = len(utila.file_list(testdir.tmpdir, recursive=True))
     # one pdf-file and jobinfo for every document
     assert count >= 10
