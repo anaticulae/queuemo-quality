@@ -14,9 +14,9 @@ import time
 
 import utila
 
+import train
 import train.loco
 
-PORT = 4444
 SERVER = 'http://localhost'
 
 
@@ -31,7 +31,7 @@ def wait(process):
 def upload(
     file: str,
     server: str = SERVER,
-    port: int = PORT,
+    port: int = train.DEV_SERVER_PORT,
     public: bool = False,
     verbose: bool = False,
 ):
@@ -60,7 +60,12 @@ def upload(
 TWO_HOURS = 3600 * 2
 
 
-def run(workspace, source, port=PORT, runtime=TWO_HOURS) -> str:
+def run(
+    workspace,
+    source,
+    port=train.DEV_SERVER_PORT,
+    runtime=TWO_HOURS,
+) -> str:
     cmd = f'train --workspace {workspace} -j=1 -p={port} -r={runtime}'
     try:
         utila.log(cmd)
