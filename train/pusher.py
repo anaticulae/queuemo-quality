@@ -7,130 +7,58 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import sys
-
 import power
 import utila
 
 import train
 import train.performance
 
-TODO = [
-    power.BACHELOR051_PDF,
-    power.BACHELOR109_PDF,
-    power.BACHELOR128_PDF,
-    power.BACHELOR241_PDF,
-    power.MASTER031_PDF,
-    power.MASTER075_PDF,
-    power.MASTER110_PDF,
-    power.MASTER112_PDF,
-    power.MASTER148_PDF,
-    power.MASTER155_PDF,
-]
-
 
 @utila.saveme
 def main():
-    # TODO: CONVERT TO REAL CLI TO EASE EXTENDING
-    argv = sys.argv
-    jobs = []
-    jobs.extend(select_doctype(argv))
-    jobs.extend(select_single(argv))
-    for method in (isall, isnewst, isoldest):
-        selected = method(sys.argv)
-        if not selected:
-            continue
-        jobs = selected
-        break
-    upload(jobs)
-    utila.log('done')
-    sys.exit(utila.SUCCESS)
-
-
-def isall(argv) -> list:
-    if not 'all' in argv:
-        return []
-    jobs = power.PDF
-    utila.log(f'publish all docs: {len(jobs)}')
-    return jobs
-
-
-def isnewst(argv) -> list:
-    try:
-        pos = argv.index('newest')
-    except ValueError:
-        return []
-    try:
-        jobs = newest(int(argv[pos + 1]))
-    except IndexError:
-        jobs = newest()
-    return jobs
-
-
-def isoldest(argv) -> list:
-    try:
-        pos = argv.index('oldest')
-    except ValueError:
-        return []
-    try:
-        jobs = oldest(int(argv[pos + 1]))
-    except IndexError:
-        jobs = oldest()
-    return jobs
-
-
-SINGLE = utila.compiles(r"""
-    \w+         # filename
-    \d{3}       # number
-    \w?         # char separator
-""")
-
-
-def select_single(argv):
-    jobs = []
-    singles = [SINGLE.search(str(item)) for item in argv]
-    singles = utila.notnone(singles)
-    singles = [utila.extract_match(item) for item in singles]
-    jobs = [item for item in power.PDF if any(it in item for it in singles)]
-    return jobs
-
-
-def select_doctype(argv):
-    bachelor, master, diss, docus, paper, todo = (
-        'bachelor' in argv,
-        'master' in argv,
-        'diss' in argv,
-        'docu' in argv,
-        'paper' in argv,
-        'todo' in argv,
+    commands = [
+        utila.Flag(shortcut='p', longcut='power', message='power files'),
+        utila.Flag(shortcut='hc', longcut='hardcore', message='hardcore files'),
+        utila.NumberedParameter(
+            shortcut='n',
+            longcut='newest',
+            message='n newest files',
+            default=0,
+        ),
+        utila.NumberedParameter(
+            shortcut='o',
+            longcut='oldest',
+            message='n oldest files',
+            default=0,
+        ),
+    ]
+    parser = utila.create_parser(
+        todo=commands,
+        config=utila.ParserConfiguration.all_off(),
+        version=train.__version__,
     )
-    minimal = 'minimal' in argv
-    jobs = []
-    for resources, selected in zip(
-        (
-            power.BACHELORS,
-            power.MASTERS,
-            power.DISSS,
-            power.DOCUS,
-            power.PAPERS,
-            TODO,
-        ),
-        (
-            bachelor,
-            master,
-            diss,
-            docus,
-            paper,
-            todo,
-        ),
-    ):
-        if not selected:
-            continue
-        if minimal:
-            jobs.extend(resources[0:10])
-        else:
-            jobs.extend(resources)
-    return jobs
+    parser.add_argument('regex', nargs='?', help='define resources due regex')
+    args = utila.parse(parser)
+    todo = []
+    if args.get('power'):
+        todo.extend(power.PDF)
+    if args.get('hardcore'):
+        import hardcore
+        todo.extend(hardcore.ALL)
+    if number := args.get('newest'):
+        todo.extend(newest(number))
+    if number := args.get('oldest'):
+        todo.extend(oldest(number))
+    if regex := args.get('regex'):
+        todo.extend([
+            item for item in power.RESOURCES
+            if utila.file_name(item).startswith(regex)
+        ])
+    if not todo:
+        utila.error('nothing todo')
+        return utila.FAILURE
+    upload(todo)
+    return utila.SUCCESS
 
 
 def upload(jobs):
