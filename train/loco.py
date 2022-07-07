@@ -69,9 +69,7 @@ class Locomotive:
         env['SHARED_READY'] = str(ready)
         env['SHARED_TMP'] = str(tmp)
 
-        env['FLASK_APP'] = 'viewo.__main__'
-
-        cmd = f'python -m flask run -p {self.port}'
+        cmd = f'viewo --port {self.port} -VVV'
         # HINT: DO NOT USE WITH TO AVOID WAITING PROBLEM
         # pylint:disable=R1732
         self.viewo = subprocess.Popen(  # nosec
