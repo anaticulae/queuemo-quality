@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import hardcore
 import power
 import utila
 
@@ -63,7 +64,6 @@ def select(args) -> list:
     if args.get('power'):
         jobs.extend(power.PDF)
     if args.get('hardcore'):
-        import hardcore
         jobs.extend(hardcore.ALL)
     if number := args.get('newest'):
         jobs.extend(newest(number))
@@ -71,7 +71,7 @@ def select(args) -> list:
         jobs.extend(oldest(number))
     if regex := args.get('regex'):
         jobs.extend([
-            item for item in power.RESOURCES
+            item for item in power.RESOURCES + hardcore.ALL
             if utila.file_name(item).startswith(regex)
         ])
     return jobs
