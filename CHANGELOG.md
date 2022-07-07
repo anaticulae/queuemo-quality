@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.5.0
+
+### Feature
+
+* add parameter to change port to publish (d07fe11f18b3)
+* add parameter to skip queuemo start (92c0b1d64f9d)
+
+### Fix
+
+* use general port (7fe8e0a294c9)
+
 ## v0.4.0
 
 ### Feature
