@@ -31,6 +31,11 @@ def main():
             message='n oldest files',
             default=0,
         ),
+        utila.NumberedParameter(
+            longcut='port',
+            message='server to publish',
+            default=train.DEV_SERVER_PORT,
+        ),
     ]
     parser = utila.create_parser(
         todo=commands,
@@ -39,32 +44,38 @@ def main():
     )
     parser.add_argument('regex', nargs='?', help='define resources due regex')
     args = utila.parse(parser)
-    todo = []
+    jobs = []
     if args.get('power'):
-        todo.extend(power.PDF)
+        jobs.extend(power.PDF)
     if args.get('hardcore'):
         import hardcore
-        todo.extend(hardcore.ALL)
+        jobs.extend(hardcore.ALL)
     if number := args.get('newest'):
-        todo.extend(newest(number))
+        jobs.extend(newest(number))
     if number := args.get('oldest'):
-        todo.extend(oldest(number))
+        jobs.extend(oldest(number))
     if regex := args.get('regex'):
-        todo.extend([
+        jobs.extend([
             item for item in power.RESOURCES
             if utila.file_name(item).startswith(regex)
         ])
-    if not todo:
+    if not jobs:
         utila.error('nothing todo')
         return utila.FAILURE
-    upload(todo)
+    port = args.get('port')
+    upload(jobs=jobs, port=port)
     return utila.SUCCESS
 
 
-def upload(jobs):
+def upload(jobs, port):
+    utila.log(f'publish to port: {port}')
     for path in jobs:
         utila.log(f'upload: {path}')
-        train.performance.upload(path, port=train.DEV_SERVER_PORT, public=True)
+        train.performance.upload(
+            path,
+            port=port,
+            public=True,
+        )
 
 
 def newest(count: int = 10) -> list:
