@@ -16,6 +16,17 @@ import train.performance
 
 @utila.saveme
 def main():
+    args = create()
+    jobs = select(args)
+    if not jobs:
+        utila.error('nothing todo')
+        return utila.FAILURE
+    port = args.get('port')
+    upload(jobs=jobs, port=port)
+    return utila.SUCCESS
+
+
+def create():
     commands = [
         utila.Flag(shortcut='p', longcut='power', message='power files'),
         utila.Flag(shortcut='hc', longcut='hardcore', message='hardcore files'),
@@ -44,6 +55,10 @@ def main():
     )
     parser.add_argument('regex', nargs='?', help='define resources due regex')
     args = utila.parse(parser)
+    return args
+
+
+def select(args) -> list:
     jobs = []
     if args.get('power'):
         jobs.extend(power.PDF)
@@ -59,12 +74,7 @@ def main():
             item for item in power.RESOURCES
             if utila.file_name(item).startswith(regex)
         ])
-    if not jobs:
-        utila.error('nothing todo')
-        return utila.FAILURE
-    port = args.get('port')
-    upload(jobs=jobs, port=port)
-    return utila.SUCCESS
+    return jobs
 
 
 def upload(jobs, port):
