@@ -9,21 +9,22 @@
 
 import power
 import pytest
+import utila
 import utilatest
 
 import train.performance
 
 PARAMETER = [
-    pytest.param(
-        item,
-        port,
-        id=utilatest.simplify_testfile_names((power.REPOSITORY, item))[0],
-    ) for port, item in enumerate(power.PDF, start=3500)
+    pytest.param(item, port, id=utila.file_name(item))
+    for port, item in enumerate(power.PDF, start=3500)
 ]
 
 
 @utilatest.nightly
-@pytest.mark.parametrize('file, port', PARAMETER)
-def test_cli_power(file, port, testdir):
-    workspace = str(testdir.tmpdir)
-    train.performance.run(workspace, file, port)
+@pytest.mark.parametrize('path, port', PARAMETER)
+def test_cli_power(path, port, testdir):
+    train.performance.run(
+        testdir.tmpdir,
+        path,
+        port,
+    )

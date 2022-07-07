@@ -9,21 +9,23 @@
 
 import hardcore
 import pytest
+import utila
 import utilatest
 
 import train.performance
 
 ALL = hardcore.F0 + hardcore.F50 + hardcore.F100 + hardcore.F200 + hardcore.F300
 HARDCORE = [
-    pytest.param(
-        item,
-        port,
-        id=utilatest.simplify_testfile_names((hardcore.ROOT, item))[0],
-    ) for port, item in enumerate(ALL, start=4000)
+    pytest.param(item, port, id=utila.file_name(item))
+    for port, item in enumerate(ALL, start=4000)
 ]
 
 
 @utilatest.nightly
 @pytest.mark.parametrize('filepath, port', HARDCORE)
 def test_hardcore(filepath, port, testdir):
-    train.performance.run(testdir.tmpdir, filepath, port)
+    train.performance.run(
+        testdir.tmpdir,
+        filepath,
+        port,
+    )
