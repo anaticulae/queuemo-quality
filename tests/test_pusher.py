@@ -47,3 +47,8 @@ def test_pusher_cli_done(testdir, freeport, monkeypatch):
     count = len(utila.file_list(testdir.tmpdir, recursive=True))
     # one pdf-file and jobinfo for every document
     assert count >= 10
+
+
+def test_pusher_cli_error(monkeypatch, capsys):
+    pusher('', monkeypatch=monkeypatch, success=False)
+    assert 'nothing todo' in utilatest.stderr(capsys)
