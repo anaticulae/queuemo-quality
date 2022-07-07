@@ -10,6 +10,8 @@
 import pytest
 import utila
 
+import train
+
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
 # ensure that viewo script is installed
@@ -19,7 +21,7 @@ utila.run('where viewo')
 @pytest.fixture
 def freeport():
     for port in range(6000, 6100):
-        cmd = f'curl http://localhost:{port}  --connect-timeout 1'
+        cmd = f'curl {train.SERVER}:{port}  --connect-timeout 1'
         completed = utila.run(cmd, expect=None)
         if completed.returncode == 7:
             # curl does not reach the port/goal therefore it is free

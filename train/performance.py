@@ -17,8 +17,6 @@ import utila
 import train
 import train.loco
 
-SERVER = 'http://localhost'
-
 
 def wait(process):
     completed = train.loco.check_process(process)
@@ -30,7 +28,7 @@ def wait(process):
 
 def upload(
     file: str,
-    server: str = SERVER,
+    server: str = train.SERVER,
     port: int = train.DEV_SERVER_PORT,
     public: bool = False,
     verbose: bool = False,
@@ -92,8 +90,8 @@ def run(
     return ready
 
 
-def waitforstartup(port: int):
-    cmd = f'curl http://localhost:{port}'
+def waitforstartup(port: int, server: str = train.SERVER):
+    cmd = f'curl {server}:{port}'
     # ensure correct startup
     for _ in range(100):
         # curl till server is online

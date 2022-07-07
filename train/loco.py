@@ -13,6 +13,8 @@ import subprocess  # nosec
 
 import utila
 
+import train
+
 Status = collections.namedtuple('Status', 'viewo, queuemo')
 
 
@@ -43,7 +45,7 @@ class Locomotive:
 
     def started(self) -> bool:
         completed = utila.run(
-            f'curl http://localhost:{self.port}',
+            f'curl {train.SERVER}:{self.port}',
             expect=None,
         )
         return not completed.returncode
