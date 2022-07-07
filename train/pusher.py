@@ -53,7 +53,7 @@ def create():
         config=utila.ParserConfiguration.all_off(),
         version=train.__version__,
     )
-    parser.add_argument('regex', nargs='?', help='define resources due regex')
+    parser.add_argument('regex', nargs='?', help='select matching files')
     args = utila.parse(parser)
     return args
 
