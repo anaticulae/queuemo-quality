@@ -36,7 +36,9 @@ class Locomotive:
 
     def state(self) -> Status:
         viewo = check_process(self.viewo)
-        queuemo = check_process(self.queuemo)
+        queuemo = None
+        if self.queuemo:
+            queuemo = check_process(self.queuemo)
         return Status(viewo=viewo, queuemo=queuemo)
 
     def started(self) -> bool:
@@ -48,9 +50,10 @@ class Locomotive:
 
     def close(self) -> Status:
         self.viewo.terminate()
-        self.queuemo.terminate()
+        if self.queuemo:
+            self.queuemo.terminate()
 
-    def start(self):
+    def start(self, queuemo_start: bool = True):
         assert not self.started(), 'already running'
         assert self.viewo is None and self.queuemo is None
 
@@ -80,15 +83,16 @@ class Locomotive:
         )
         # ensure that process is started correctly
         assert check_process(self.viewo) is None
-        cmd = f'queuemo --runtime={self.runtime} --jobs={self.jobs}'
-        self.queuemo = subprocess.Popen(  # nosec
-            cmd,
-            env=env,
-            stdout=silent,
-            stderr=silent,
-        )
-        # ensure that process is started correctly
-        assert check_process(self.queuemo) is None  # TODO: VERIFY THIS
+        if queuemo_start:
+            cmd = f'queuemo --runtime={self.runtime} --jobs={self.jobs}'
+            self.queuemo = subprocess.Popen(  # nosec
+                cmd,
+                env=env,
+                stdout=silent,
+                stderr=silent,
+            )
+            # ensure that process is started correctly
+            assert check_process(self.queuemo) is None  # TODO: VERIFY THIS
 
     def wait(self, seconds=10) -> Status:
         result = None
