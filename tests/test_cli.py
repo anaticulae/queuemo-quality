@@ -24,6 +24,6 @@ PARAMETER = [
 
 @utilatest.nightly
 @pytest.mark.parametrize('file, port', PARAMETER)
-def test_cli(file, port, testdir):
+def test_cli_power(file, port, testdir):
     workspace = str(testdir.tmpdir)
     train.performance.run(workspace, file, port)
