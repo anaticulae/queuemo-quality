@@ -17,7 +17,17 @@ import train.performance
 import train.pusher
 
 
-def test_pusher_cli(testdir, freeport, monkeypatch):
+def pusher(cmd, monkeypatch, success: bool = True):
+    return utilatest.run_command(
+        cmd,
+        process='pusher',
+        main=train.pusher.main,
+        monkeypatch=monkeypatch,
+        success=success,
+    )
+
+
+def test_pusher_cli_done(testdir, freeport, monkeypatch):
     # TODO: AUTOMATE FREE PORT FINDER
     port = freeport
     root = testdir.tmpdir
@@ -26,14 +36,8 @@ def test_pusher_cli(testdir, freeport, monkeypatch):
     train.performance.waitforstartup(port)
     count = len(utila.file_list(testdir.tmpdir, recursive=True))
     assert count <= 1
-    cmd = f'pusher --newest 5 --port {port}'
-    utilatest.run_command(
-        cmd,
-        process='pusher',
-        main=train.pusher.main,
-        monkeypatch=monkeypatch,
-        success=True,
-    )
+    cmd = f'--newest 5 --port {port}'
+    pusher(cmd, monkeypatch)
     # shutdown resource receiver
     locomotive.close()
     # wait for shutdown
