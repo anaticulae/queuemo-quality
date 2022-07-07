@@ -34,6 +34,8 @@ def test_pusher_cli(testdir, freeport, monkeypatch):
     )
     # shutdown resource receiver
     locomotive.close()
+    # wait for shutdown
+    locomotive.wait()
     count = len(utila.file_list(testdir.tmpdir, recursive=True))
     # one pdf-file and jobinfo for every document
     assert count >= 10

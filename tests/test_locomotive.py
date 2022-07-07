@@ -11,9 +11,12 @@ import train.loco
 import train.performance
 
 
-def test_locomotive_run(testdir):
+def test_locomotive_run(testdir, freeport):
     root = testdir.tmpdir
-    locomotive = train.loco.create(root, port=train.performance.PORT)
+    locomotive = train.loco.create(
+        root,
+        port=freeport,
+    )
     locomotive.start()
     result = locomotive.wait()
     assert not result.queuemo, str(result)
