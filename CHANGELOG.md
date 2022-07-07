@@ -2,6 +2,24 @@
 
 Every noteable change is logged here.
 
+## v0.4.0
+
+### Feature
+
+* add method to push newest[count] or oldest[count] documents (d1af5f262f0d)
+* improve error feedback (d08921986532)
+
+### Fix
+
+* adjust viewo invocation (03f2245fa056)
+* make selector more sensitive (67547167b4a4)
+* fix startup problem (4cd00f30e499)
+
+### Documentation
+
+* adjust modules path (65455326bd13)
+* Happy New Year! (bd7cd5ae2dc0)
+
 ## v0.3.0
 
 ### Feature
