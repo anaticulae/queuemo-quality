@@ -10,6 +10,7 @@
 import os
 import sys
 
+import pytest
 import utila
 import utilatest
 
@@ -27,3 +28,14 @@ def pytest_sessionstart(session):  # pylint:disable=W0613
     if not single_test and ('GENERATE' in os.environ or utilatest.LONGRUN):
         utila.log('install requirements')
         utilatest.clean_install(train.ROOT, train.PROCESS)
+
+
+@pytest.fixture
+def freeport():
+    for port in range(6000, 6100):
+        cmd = f'curl http://localhost:{port}  --connect-timeout 1'
+        completed = utila.run(cmd, expect=None)
+        if completed.returncode == 7:
+            # curl does not reach the port/goal therefore it is free
+            return port
+    return None
