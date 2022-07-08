@@ -28,9 +28,19 @@ def main():
 
 
 def create():
+    powers = utila.Parameter(
+        shortcut='p',
+        longcut='power',
+        message='power files',
+    )
+    hardcores = utila.Parameter(
+        shortcut='hc',
+        longcut='hardcore',
+        message='hardcore files',
+    )
     commands = [
-        utila.Flag(shortcut='p', longcut='power', message='power files'),
-        utila.Flag(shortcut='hc', longcut='hardcore', message='hardcore files'),
+        powers,
+        hardcores,
         utila.NumberedParameter(
             shortcut='n',
             longcut='newest',
@@ -61,10 +71,18 @@ def create():
 
 def select(args) -> list:
     jobs = []
-    if args.get('power'):
-        jobs.extend(power.PDF)
-    if args.get('hardcore'):
-        jobs.extend(hardcore.ALL)
+    if powers := args.get('power'):
+        pages = utila.parse_pages(powers, pagecount=len(power.PDF))
+        if pages is None:
+            jobs.extend(power.PDF)
+        else:
+            jobs.extend([power.PDF[page] for page in pages])
+    if hardcores := args.get('hardcore'):
+        pages = utila.parse_pages(hardcores, pagecount=len(hardcore.ALL))
+        if pages is None:
+            jobs.extend(hardcore.ALL)
+        else:
+            jobs.extend([hardcore.ALL[page] for page in pages])
     if number := args.get('newest'):
         jobs.extend(newest(number))
     if number := args.get('oldest'):
