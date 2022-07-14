@@ -17,38 +17,38 @@ import train.performance
 import train.pusher
 
 
-def pusher(cmd, monkeypatch, success: bool = True):
+def pusher(cmd, mp, success: bool = True):
     return utilatest.run_command(
         cmd,
         process='pusher',
         main=train.pusher.main,
-        monkeypatch=monkeypatch,
+        mp=mp,
         success=success,
     )
 
 
-def test_pusher_cli_done(testdir, freeport, monkeypatch):
+def test_pusher_cli_done(td, freeport, mp):
     # TODO: AUTOMATE FREE PORT FINDER
     port = freeport
-    root = testdir.tmpdir
+    root = td.tmpdir
     locomotive = train.loco.create(root, port=port, runtime=10)
     locomotive.start(queuemo_start=False)
     train.performance.waitforstartup(port)
-    count = len(utila.file_list(testdir.tmpdir, recursive=True))
+    count = len(utila.file_list(td.tmpdir, recursive=True))
     assert count <= 1
     cmd = f'--newest 5 --port {port}'
-    pusher(cmd, monkeypatch)
+    pusher(cmd, mp)
     # shutdown resource receiver
     locomotive.close()
     # wait for shutdown
     locomotive.wait()
     # wait for publish # TODO: IMPROVE LATER
     time.sleep(5.0)
-    count = len(utila.file_list(testdir.tmpdir, recursive=True))
+    count = len(utila.file_list(td.tmpdir, recursive=True))
     # one pdf-file and jobinfo for every document
     assert count >= 10
 
 
-def test_pusher_cli_error(monkeypatch, capsys):
-    pusher('', monkeypatch=monkeypatch, success=False)
+def test_pusher_cli_error(mp, capsys):
+    pusher('', mp=mp, success=False)
     assert 'nothing todo' in utilatest.stderr(capsys)

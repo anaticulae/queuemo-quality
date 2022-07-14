@@ -11,8 +11,8 @@ import train.loco
 import train.performance
 
 
-def test_locomotive_run(testdir, freeport):
-    root = testdir.tmpdir
+def test_locomotive_run(td, freeport):
+    root = td.tmpdir
     locomotive = train.loco.create(
         root,
         port=freeport,

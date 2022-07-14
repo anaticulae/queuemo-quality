@@ -22,9 +22,9 @@ PARAMETER = [
 
 @utilatest.nightly
 @pytest.mark.parametrize('path, port', PARAMETER)
-def test_cli_power(path, port, testdir):
+def test_cli_power(path, port, td):
     train.performance.run(
-        testdir.tmpdir,
+        td.tmpdir,
         path,
         port,
     )

@@ -23,9 +23,9 @@ HARDCORE = [
 
 @utilatest.nightly
 @pytest.mark.parametrize('filepath, port', HARDCORE)
-def test_hardcore(filepath, port, testdir):
+def test_hardcore(filepath, port, td):
     train.performance.run(
-        testdir.tmpdir,
+        td.tmpdir,
         filepath,
         port,
     )

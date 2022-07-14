@@ -17,9 +17,9 @@ import train.performance
 
 @pytest.mark.parametrize('public', [True, False])
 @utilatest.nightly
-def test_publish(public, testdir):
+def test_publish(public, td):
     port = 4444 if public else 4445
-    root = testdir.tmpdir
+    root = td.tmpdir
     locomotive = train.loco.create(root, port=port, runtime=10)
     locomotive.start()
     # upload a single file
