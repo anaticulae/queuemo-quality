@@ -64,7 +64,11 @@ def create():
         config=utila.ParserConfiguration.all_off(),
         version=train.__version__,
     )
-    parser.add_argument('regex', nargs='?', help='select matching files')
+    parser.add_argument(
+        'regex',
+        nargs='?',
+        help='select matching files or a single file.',
+    )
     args = utila.parse(parser)
     return args
 
@@ -88,7 +92,10 @@ def select(args) -> list:
     if number := args.get('oldest'):
         jobs.extend(oldest(number))
     if regex := args.get('regex'):
-        jobs.extend(regex_select(regex=regex))
+        if files := file_select(regex):
+            jobs.extend(files)
+        else:
+            jobs.extend(regex_select(regex=regex))
     return jobs
 
 
@@ -105,6 +112,19 @@ def regex_select(regex: str) -> list:
         if utila.file_name(item).startswith(regex)
     ]
     return result
+
+
+def file_select(path: str) -> list:
+    """Select file which is not part of corpus(power, hardcore).
+
+    This file is mostly selected via cli.
+
+    >>> file_select(__file__)
+    ['...pusher.py']
+    """
+    if not utila.isfilepath(path):
+        return None
+    return [utila.make_absolute(path)]
 
 
 def upload(jobs, port):
