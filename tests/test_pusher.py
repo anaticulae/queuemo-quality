@@ -27,6 +27,7 @@ def pusher(cmd, mp, expect: bool = True):
     )
 
 
+@utilatest.longrun
 def test_pusher_cli_done(td, freeport, mp):
     # TODO: AUTOMATE FREE PORT FINDER
     port = freeport
