@@ -88,11 +88,23 @@ def select(args) -> list:
     if number := args.get('oldest'):
         jobs.extend(oldest(number))
     if regex := args.get('regex'):
-        jobs.extend([
-            item for item in power.RESOURCES + hardcore.ALL
-            if utila.file_name(item).startswith(regex)
-        ])
+        jobs.extend(regex_select(regex=regex))
     return jobs
+
+
+def regex_select(regex: str) -> list:
+    """Select files via regex.
+
+    Use power and hardcore as source of selection.
+
+    >>> regex_select('bachelor032')
+    ['...', '...',...]
+    """
+    result = [
+        item for item in power.RESOURCES + hardcore.ALL
+        if utila.file_name(item).startswith(regex)
+    ]
+    return result
 
 
 def upload(jobs, port):
