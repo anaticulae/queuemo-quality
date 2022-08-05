@@ -17,13 +17,13 @@ import train.performance
 import train.pusher
 
 
-def pusher(cmd, mp, success: bool = True):
-    return utilatest.run_command(
+def pusher(cmd, mp, expect: bool = True):
+    return utilatest.run_cov(
         cmd,
         process='pusher',
         main=train.pusher.main,
         mp=mp,
-        success=success,
+        expect=expect,
     )
 
 
@@ -50,5 +50,5 @@ def test_pusher_cli_done(td, freeport, mp):
 
 
 def test_pusher_cli_error(mp, capsys):
-    pusher('', mp=mp, success=False)
+    pusher('', mp=mp, expect=False)
     assert 'nothing todo' in utilatest.stderr(capsys)
