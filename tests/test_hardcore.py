@@ -21,7 +21,7 @@ HARDCORE = [
 ]
 
 
-@utilatest.nightly
+@utilatest.monday
 @pytest.mark.parametrize('filepath, port', HARDCORE)
 def test_hardcore(filepath, port, td):
     train.performance.run(
