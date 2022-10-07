@@ -64,7 +64,7 @@ def run(
     port=train.DEV_SERVER_PORT,
     runtime=TWO_HOURS,
 ) -> str:
-    cmd = f'train --workspace {workspace} -j=1 -p={port} -r={runtime}'
+    cmd = f'train --workspace {workspace} -j=1 -p={port} -r={runtime}'.split()
     try:
         utila.log(cmd)
         with subprocess.Popen(  # nosec

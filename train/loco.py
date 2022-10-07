@@ -74,7 +74,7 @@ class Locomotive:
         env['SHARED_READY'] = str(ready)
         env['SHARED_TMP'] = str(tmp)
 
-        cmd = f'viewo --port {self.port} -VVV'
+        cmd = f'viewo --port {self.port} -VVV'.split()
         # HINT: DO NOT USE WITH TO AVOID WAITING PROBLEM
         # pylint:disable=R1732
         self.viewo = subprocess.Popen(  # nosec
@@ -86,7 +86,7 @@ class Locomotive:
         # ensure that process is started correctly
         assert check_process(self.viewo) is None
         if queuemo_start:
-            cmd = f'queuemo --runtime={self.runtime} --jobs={self.jobs}'
+            cmd = f'queuemo --runtime={self.runtime} --jobs={self.jobs}'.split()
             self.queuemo = subprocess.Popen(  # nosec
                 cmd,
                 env=env,
