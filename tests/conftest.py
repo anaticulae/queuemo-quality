@@ -17,7 +17,7 @@ import train
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
 # ensure that viewo script is installed
-utila.run('where viewo')
+assert utila.hasprog('viewo'), 'install viewo'
 
 
 @pytest.fixture
