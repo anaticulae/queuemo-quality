@@ -64,26 +64,24 @@ def run(
     port=train.DEV_SERVER_PORT,
     runtime=TWO_HOURS,
 ) -> str:
-    cmd = f'train --workspace {workspace} -j=1 -p={port} -r={runtime}'.split()
-    try:
-        utila.log(cmd)
-        with subprocess.Popen(  # nosec
-                cmd,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-        ) as process:
-            waitforstartup(port)
-            returncode = train.loco.check_process(process)
-            assert returncode is None, returncode
-            # upload test file
-            upload(file=source, port=port, public=True)
-            # wait for finished process
-            returncode = wait(process)
-            assert returncode == utila.SUCCESS, returncode
-    except FileNotFoundError:
+    if not utila.hasprog('train'):
         utila.error('install `train` please')
         sys.exit(127)
-
+    cmd = f'train --workspace {workspace} -j=1 -p={port} -r={runtime}'.split()
+    utila.log(cmd)
+    with subprocess.Popen(  # nosec
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+    ) as process:
+        waitforstartup(port)
+        returncode = train.loco.check_process(process)
+        assert returncode is None, returncode
+        # upload test file
+        upload(file=source, port=port, public=True)
+        # wait for finished process
+        returncode = wait(process)
+        assert returncode == utila.SUCCESS, returncode
     ready = os.path.join(workspace, 'ready')
     count = utila.file_count(ready)
     assert count >= 15, ready
