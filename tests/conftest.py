@@ -22,7 +22,7 @@ assert utila.hasprog('viewo'), 'install viewo'
 
 @pytest.fixture
 def freeport():
-    for port in range(6000, 6100):
+    for port in utila.ranges(8000, 82000):
         cmd = f'curl {train.SERVER}:{port}  --connect-timeout 1'
         completed = utila.run(cmd, expect=None)
         if completed.returncode == 7:
