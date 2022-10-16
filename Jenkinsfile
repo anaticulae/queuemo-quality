@@ -39,7 +39,7 @@ pipeline{
         }
         stage('all'){
             steps{
-                sh 'baw test all -n16 --cov --junit_xml=report.xml'
+                sh 'baw test all -n1 --cov --junit_xml=report.xml'
                 junit '**/report.xml'
             }
         }
