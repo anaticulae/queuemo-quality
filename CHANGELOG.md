@@ -2,6 +2,26 @@
 
 Every noteable change is logged here.
 
+## v0.6.0 (2022-10-17)
+
+### Feature
+
+* add option to push files via cli (f3965fe7f691)
+* add option to select hardcore and power files (25b0e12c4891)
+* add hardcore sources to regex step (f6c2514f90ad)
+
+### Fix
+
+* adjust cmd invocation for linux (4a1eb8aefe6b)
+* adjust test for linux (b75fb002f179)
+
+### Chore
+
+* use a single worker to avoid side effects (843ace424cbf)
+* add Jenkinsfile (6052ed66b23a)
+* upgrade requirements.txt (dcc926991f61)
+* upgrade requirements.txt (9ae475cc5c84)
+
 ## v0.5.0
 
 ### Feature
