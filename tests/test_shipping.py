@@ -29,5 +29,5 @@ def test_publish(public, td):
         port=port,
     )
     # wait for publishing
-    result = locomotive.wait(None)
+    result = locomotive.wait()
     assert not result.queuemo, str(result)
