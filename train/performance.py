@@ -20,7 +20,7 @@ import train.loco
 
 def wait(process):
     completed = train.loco.check_process(process)
-    while completed is None:
+    while completed is None:  # pylint:disable=W0149
         completed = train.loco.check_process(process)
         time.sleep(1.0)
     return completed
