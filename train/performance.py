@@ -28,7 +28,7 @@ def wait(process):
 
 def upload(
     file: str,
-    server: str = train.SERVER,
+    server: str = train.DEV_SERVER_URL,
     port: int = train.DEV_SERVER_PORT,
     public: bool = False,
     verbose: bool = False,
@@ -88,7 +88,7 @@ def run(
     return ready
 
 
-def waitforstartup(port: int, server: str = train.SERVER):
+def waitforstartup(port: int, server: str = train.DEV_SERVER_URL):
     cmd = f'curl {server}:{port}'
     # ensure correct startup
     for _ in range(100):
