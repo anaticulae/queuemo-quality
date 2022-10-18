@@ -12,34 +12,45 @@ services:
             - "shared_todo:/var/shared/todo"
             - "tmp_view:/tmp"
     worker:
-        image: 169.254.149.20:6001/caelum_release_work:1.24.3
+        image: 169.254.149.20:6001/caelum_release_work:1.24.5
         volumes:
             - "shared:/var/shared"
             - "shared_ready:/var/shared/ready"
             - "shared_todo:/var/shared/todo"
             - "tmp_worker:/tmp"
+            - "cached:/var/cached"
+    qcon:
+        image: 169.254.149.20:6001/caelum_qcon_dev:2.27.2
+        ports:
+            - 8100:8100
+        volumes:
+            - "cached:/var/cached"
     first:
-        image: 169.254.149.20:6001/caelum_release_work:1.24.3
+        image: 169.254.149.20:6001/caelum_release_work:1.24.5
         volumes:
             - "shared:/var/shared"
             - "shared_ready:/var/shared/ready"
             - "shared_todo:/var/shared/todo"
             - "tmp_worker:/tmp"
+            - "cached:/var/cached"
     second:
-        image: 169.254.149.20:6001/caelum_release_work:1.24.3
+        image: 169.254.149.20:6001/caelum_release_work:1.24.5
         volumes:
             - "shared:/var/shared"
             - "shared_ready:/var/shared/ready"
             - "shared_todo:/var/shared/todo"
             - "tmp_worker:/tmp"
+            - "cached:/var/cached"
     third:
-        image: 169.254.149.20:6001/caelum_release_work:1.24.3
+        image: 169.254.149.20:6001/caelum_release_work:1.24.5
         volumes:
             - "shared:/var/shared"
             - "shared_ready:/var/shared/ready"
             - "shared_todo:/var/shared/todo"
             - "tmp_worker:/tmp"
+            - "cached:/var/cached"
 volumes:
+    cached:
     shared:
     shared_ready:
     shared_todo:
