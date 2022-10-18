@@ -1,4 +1,5 @@
 version: '3'
+name: release_train
 services:
     view:
         image: 169.254.149.20:6001/caelum_view_release:2.27.1
