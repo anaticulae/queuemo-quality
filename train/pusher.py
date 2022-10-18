@@ -108,7 +108,7 @@ def regex_select(regex: str) -> list:
     ['...', '...',...]
     """
     result = [
-        item for item in power.RESOURCES + hardcore.ALL
+        item for item in power.PDF + hardcore.ALL
         if utila.file_name(item).startswith(regex)
     ]
     return result
