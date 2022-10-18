@@ -7,10 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import pytest
+
 import train.loco
 import train.performance
 
 
+@pytest.mark.timeout(60)
 def test_locomotive_run(td, freeport):
     root = td.tmpdir
     locomotive = train.loco.create(
