@@ -10,3 +10,6 @@
 [project]
 short = train
 name = let the dice role
+
+[test]
+plugins=timeout
