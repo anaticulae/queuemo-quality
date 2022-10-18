@@ -9,10 +9,17 @@
 
 import os
 
+import configo
+
 __version__ = '0.6.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PROCESS = 'train'
 
 DEV_SERVER_PORT = 8080
-DEV_SERVER_URL = 'http://localhost'
+
+# 169.254.149.20
+DEV_SERVER_URL = configo.env(
+    name='HEAVEN',
+    default='localhost',
+)

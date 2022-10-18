@@ -23,7 +23,7 @@ assert utila.hasprog('viewo'), 'install viewo'
 @pytest.fixture
 def freeport():
     for port in utila.ranges(8000, 8200):
-        cmd = f'curl {train.DEV_SERVER_URL}:{port}  --connect-timeout 1'
+        cmd = f'curl http://{train.DEV_SERVER_URL}:{port}  --connect-timeout 1'
         completed = utila.run(cmd, expect=None)
         if completed.returncode == 7:
             # curl does not reach the port/goal therefore it is free

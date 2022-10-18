@@ -43,7 +43,7 @@ def upload(
     """
     base, filename = os.path.split(file)
     public = '?public=True' if public else ''
-    api = f'{server}:{port}/api/v0/documents{public}'
+    api = f'http://{server}:{port}/api/v0/documents{public}'
     cmd = f'curl -F "file=@{filename}" {api}'
     if verbose:
         utila.log(cmd)
@@ -89,7 +89,7 @@ def run(
 
 
 def waitforstartup(port: int, server: str = train.DEV_SERVER_URL):
-    cmd = f'curl {server}:{port}'
+    cmd = f'curl http://{server}:{port}'
     # ensure correct startup
     for _ in range(100):
         # curl till server is online
