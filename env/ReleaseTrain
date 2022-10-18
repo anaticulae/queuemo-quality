@@ -18,6 +18,27 @@ services:
             - "shared_ready:/var/shared/ready"
             - "shared_todo:/var/shared/todo"
             - "tmp_worker:/tmp"
+    first:
+        image: 169.254.149.20:6001/caelum_release_work:1.24.3
+        volumes:
+            - "shared:/var/shared"
+            - "shared_ready:/var/shared/ready"
+            - "shared_todo:/var/shared/todo"
+            - "tmp_worker:/tmp"
+    second:
+        image: 169.254.149.20:6001/caelum_release_work:1.24.3
+        volumes:
+            - "shared:/var/shared"
+            - "shared_ready:/var/shared/ready"
+            - "shared_todo:/var/shared/todo"
+            - "tmp_worker:/tmp"
+    third:
+        image: 169.254.149.20:6001/caelum_release_work:1.24.3
+        volumes:
+            - "shared:/var/shared"
+            - "shared_ready:/var/shared/ready"
+            - "shared_todo:/var/shared/todo"
+            - "tmp_worker:/tmp"
 volumes:
     shared:
     shared_ready:
