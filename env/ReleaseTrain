@@ -20,6 +20,12 @@ services:
             - "shared_todo:/var/shared/todo"
             - "tmp_worker:/tmp"
             - "cached:/var/cached"
+    admin_helpdesk:
+        image: 169.254.149.20:6001/caelum_admin_helpdesk_release:0.3.1
+        ports:
+            - 8101:5000
+        volumes:
+            - "messages:/var/admin_helpdesk"
     qcon:
         image: 169.254.149.20:6001/caelum_qcon_dev:2.27.2
         ports:
@@ -52,6 +58,7 @@ services:
             - "cached:/var/cached"
 volumes:
     cached:
+    messages:
     shared:
     shared_ready:
     shared_todo:
