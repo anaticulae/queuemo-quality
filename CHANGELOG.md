@@ -2,6 +2,32 @@
 
 Every noteable change is logged here.
 
+## v0.7.0 (2022-11-08)
+
+### Feature
+
+* upgrade environment (fb76a74de706)
+* remove worker (b3e2d5bb2659)
+* upgrade environment (81a76a2d83fb)
+* add helpdesk path to view (cf312837ca4d)
+* run admin helpdesk (46ad34977bf4)
+* use HEAVEN to adjust publisher (ed3c3a19f426)
+* add more queuemo worker (f674a8e249af)
+* adjust dev server port (c93f5538d8b5)
+* add docker compose (1f2e28917ea1)
+
+### Fix
+
+* use resource without directories (c4a0628f50a1)
+
+### Chore
+
+* upgrade environment (d6d1eba8f301)
+* upgrade requirements.txt (007b5b5cb43d)
+* add service name (be23edd8da2f)
+* add qcon runner (b4a2621a00dd)
+* add timeout plugin (6fb2ee4e9f51)
+
 ## v0.6.0 (2022-10-17)
 
 ### Feature
