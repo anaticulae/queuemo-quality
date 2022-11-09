@@ -87,7 +87,7 @@ def run(todo, start: int = 4700):
         # load findings by page
         findings = protocol.findings_from_path(ready)
         # global finding list
-        findings = utila.flatten([item.content for item in findings])
+        findings = utila.flat([item.content for item in findings])
         # TODO: REPLACE AFTER UPGRADING?
-        findings = utila.make_unique(findings)
+        findings = utila.unique(findings)
         utila.log(f'findings: {len(findings)}')
