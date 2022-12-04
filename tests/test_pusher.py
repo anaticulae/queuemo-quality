@@ -27,6 +27,8 @@ def pusher(cmd, mp, expect: bool = True):
     )
 
 
+# TODO: ENABLE LINUX LATER
+@utilatest.no_linux
 @utilatest.longrun
 def test_pusher_cli_done(td, freeport, mp):
     # TODO: AUTOMATE FREE PORT FINDER

@@ -15,6 +15,8 @@ import train.loco
 import train.performance
 
 
+# TODO: ENABLE LINUX LATER
+@utilatest.no_linux
 @pytest.mark.parametrize('public', [True, False])
 @utilatest.nightly
 def test_publish(public, td):
