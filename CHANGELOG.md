@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v0.7.1 (2022-12-04)
+
+### Chore
+
+* add missing dev server (889986abdb07)
+* upgrade pipeline (a552386169c3)
+* upgrade requirements.txt (2dc29a79be7a)
+* add helpdesk path (46486bc764f2)
+
 ## v0.7.0 (2022-11-08)
 
 ### Feature
