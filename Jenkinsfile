@@ -8,6 +8,7 @@ pipeline{
     }
     environment{
         ADMIN_HELPDESK="/var/admin_helpdesk"
+        HEAVEN="169.254.149.20"
     }
     stages{
         stage('setup'){
