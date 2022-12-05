@@ -12,5 +12,7 @@ utila>=2.97.0<3.0.0
 queuemo>=1.25.0<2.0.0
 viewo>=2.27.3<3.0.0
 
+protocol>=3.19.3<4.0.0
+
 power==2.19.0
 hardcore==0.8.0
