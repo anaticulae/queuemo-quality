@@ -2,7 +2,7 @@ version: '3'
 name: release_train
 services:
     view:
-        image: 169.254.149.20:6001/caelum_view_release:2.27.3
+        image: 169.254.149.20:6001/release_view:v2.29.2
         environment:
             PORT: 5000
             ADMIN_HELPDESK: /var/admin_helpdesk
@@ -15,7 +15,7 @@ services:
             - "tmp_view:/tmp"
             - "messages:/var/admin_helpdesk"
     worker:
-        image: 169.254.149.20:6001/caelum_release_work:1.25.0
+        image: 169.254.149.20:6001/caelum_release_work:v1.27.2
         volumes:
             - "shared:/var/shared"
             - "shared_ready:/var/shared/ready"
