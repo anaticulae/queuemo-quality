@@ -22,8 +22,17 @@ def main():
     if not jobs:
         utila.error('nothing todo')
         return utila.FAILURE
-    port = args.get('port')
-    upload(jobs=jobs, port=port)
+    port = train.DEV_SERVER_PORT
+    if args['port']:
+        port = int(args['port'])
+    host = train.DEV_SERVER_URL
+    if args['host']:
+        host = args['host']
+    upload(
+        jobs=jobs,
+        port=port,
+        host=host,
+    )
     return utila.SUCCESS
 
 
@@ -53,9 +62,13 @@ def create():
             message='n oldest files',
             default=0,
         ),
+        utila.Parameter(
+            longcut='host',
+            message='server url to publish',
+        ),
         utila.NumberedParameter(
             longcut='port',
-            message='server to publish',
+            message='server port to publish',
             default=train.DEV_SERVER_PORT,
         ),
     ]
@@ -127,12 +140,14 @@ def file_select(path: str) -> list:
     return [utila.make_absolute(path)]
 
 
-def upload(jobs, port):
+def upload(jobs, port, host):
     utila.log(f'publish to port: {port}')
+    utila.log(f'publish to host: {host}')
     for path in jobs:
         utila.log(f'upload: {path}')
         train.performance.upload(
             path,
+            server=host,
             port=port,
             public=True,
         )
