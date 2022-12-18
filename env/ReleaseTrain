@@ -15,7 +15,7 @@ services:
             - "tmp_view:/tmp"
             - "messages:/var/admin_helpdesk"
     worker:
-        image: 169.254.149.20:6001/caelum_release_work:v1.27.2
+        image: 169.254.149.20:6001/release_work:v1.27.3
         volumes:
             - "shared:/var/shared"
             - "shared_ready:/var/shared/ready"
