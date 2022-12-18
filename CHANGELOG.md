@@ -2,6 +2,23 @@
 
 Every noteable change is logged here.
 
+## v0.8.0 (2022-12-18)
+
+### Feature
+
+* add option to change base url (2a56d3bab5ed)
+
+### Chore
+
+* rename work image (20b3d19799f5)
+* add rebase step (f1338cf808ef)
+* use quick installer (f1cd9790bcbd)
+* upgrade Jenkinsfile (b6584da35812)
+* upgrade images (4d37ea112354)
+* upgrade requirements.txt (bb807de8c2e1)
+* add missing protocol (77b62be0c95f)
+* upgrade pipe library (1fd0a65e2387)
+
 ## v0.7.1 (2022-12-04)
 
 ### Chore
