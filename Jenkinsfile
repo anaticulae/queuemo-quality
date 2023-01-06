@@ -49,6 +49,9 @@ pipeline{
                 }
             }
         }
+        stage('pre'){
+            steps{script{baw.pre()}}
+        }
         stage('all'){
             steps{
                 script{baw.all()}
