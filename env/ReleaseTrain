@@ -2,7 +2,7 @@ version: '3'
 name: release_train
 services:
     view:
-        image: 169.254.149.20:6001/release_view:v2.29.2
+        image: 169.254.149.20:6001/release_view:v2.29.3
         environment:
             PORT: 5000
             ADMIN_HELPDESK: /var/admin_helpdesk
@@ -15,7 +15,7 @@ services:
             - "tmp_view:/tmp"
             - "messages:/var/admin_helpdesk"
     worker:
-        image: 169.254.149.20:6001/release_work:v1.27.3
+        image: 169.254.149.20:6001/release_work:v1.27.4
         volumes:
             - "shared:/var/shared"
             - "shared_ready:/var/shared/ready"
@@ -23,7 +23,7 @@ services:
             - "tmp_worker:/tmp"
             - "cached:/var/cached"
     admin_helpdesk:
-        image: 169.254.149.20:6001/caelum_admin_helpdesk_release:0.3.2
+        image: 169.254.149.20:6001/caelum_admin_helpdesk_release:v0.3.4
         environment:
             ADMIN_HELPDESK: /var/admin_helpdesk
         ports:
@@ -31,7 +31,7 @@ services:
         volumes:
             - "messages:/var/admin_helpdesk"
     qcon:
-        image: 169.254.149.20:6001/caelum_qcon_dev:2.27.2
+        image: 169.254.149.20:6001/caelum_qcon_dev:v0.8.2
         ports:
             - 8100:8100
         volumes:
