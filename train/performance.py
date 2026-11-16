@@ -12,7 +12,7 @@ import subprocess
 import sys
 import time
 
-import utila
+import utilo
 
 import train
 import train.loco
@@ -46,13 +46,13 @@ def upload(
     api = f'http://{server}:{port}/api/v0/documents{public}'
     cmd = f'curl -F "file=@{filename}" {api}'
     if verbose:
-        utila.log(cmd)
-    completed = utila.run(cmd, cwd=base, expect=None)
+        utilo.log(cmd)
+    completed = utilo.run(cmd, cwd=base, expect=None)
     if completed.returncode:
-        utila.error(cmd)
-        utila.error(completed.stderr)
-        utila.error('check connection')
-        sys.exit(utila.FAILURE)
+        utilo.error(cmd)
+        utilo.error(completed.stderr)
+        utilo.error('check connection')
+        sys.exit(utilo.FAILURE)
 
 
 TWO_HOURS = 3600 * 2
@@ -64,11 +64,11 @@ def run(
     port=train.DEV_SERVER_PORT,
     runtime=TWO_HOURS,
 ) -> str:
-    if not utila.hasprog('train'):
-        utila.error('install `train` please')
+    if not utilo.hasprog('train'):
+        utilo.error('install `train` please')
         sys.exit(127)
     cmd = f'train --workspace {workspace} -j=1 -p={port} -r={runtime}'.split()
-    utila.log(cmd)
+    utilo.log(cmd)
     with subprocess.Popen(  # nosec
             cmd,
             stdout=subprocess.PIPE,
@@ -81,9 +81,9 @@ def run(
         upload(file=source, port=port, public=True)
         # wait for finished process
         returncode = wait(process)
-        assert returncode == utila.SUCCESS, returncode
+        assert returncode == utilo.SUCCESS, returncode
     ready = os.path.join(workspace, 'ready')
-    count = utila.file_count(ready)
+    count = utilo.file_count(ready)
     assert count >= 15, ready
     return ready
 
@@ -93,9 +93,9 @@ def waitforstartup(port: int, server: str = train.DEV_SERVER_URL):
     # ensure correct startup
     for _ in range(100):
         # curl till server is online
-        completed = utila.run(cmd, expect=None)
-        if completed.returncode == utila.SUCCESS:
+        completed = utilo.run(cmd, expect=None)
+        if completed.returncode == utilo.SUCCESS:
             break
     else:
-        utila.error(f'timeout: {cmd}')
-        sys.exit(utila.FAILURE)
+        utilo.error(f'timeout: {cmd}')
+        sys.exit(utilo.FAILURE)

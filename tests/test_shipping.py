@@ -7,18 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
-import utilatest
+import utilotest
 
 import train.loco
 import train.performance
 
 
 # TODO: ENABLE LINUX LATER
-@utilatest.no_linux
+@utilotest.no_linux
 @pytest.mark.parametrize('public', [True, False])
-@utilatest.nightly
+@utilotest.nightly
 def test_publish(public, td):
     port = 4444 if public else 4445
     root = td.tmpdir
@@ -26,7 +26,7 @@ def test_publish(public, td):
     locomotive.start()
     # upload a single file
     train.performance.upload(
-        file=power.HOME018_PDF,
+        file=hoverpower.HOME018_PDF,
         public=public,
         port=port,
     )

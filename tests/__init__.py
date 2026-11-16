@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-import power
+import hoverpower
 
 import train
 
-power.setup(train.ROOT)
+hoverpower.setup(train.ROOT)

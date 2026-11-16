@@ -10,26 +10,26 @@
 import os
 import sys
 
-import utila
+import utilo
 
 import train
 import train.loco
 
 
-@utila.saveme
+@utilo.saveme
 def main():
     commands = [
-        utila.NumberedParameter(
+        utilo.NumberedParameter(
             shortcut='p',
             message='used port',
             default=train.DEV_SERVER_PORT,
         ),
-        utila.NumberedParameter(shortcut='r', message='runtime', default=3600),
-        utila.Parameter(longcut='workspace', message='workspace'),
+        utilo.NumberedParameter(shortcut='r', message='runtime', default=3600),
+        utilo.Parameter(longcut='workspace', message='workspace'),
     ]
-    parser = utila.cli.create_parser(
+    parser = utilo.cli.create_parser(
         todo=commands,
-        config=utila.ParserConfiguration(
+        config=utilo.ParserConfiguration(
             multiprocessed=True,
             inputparameter=False,
             outputparameter=False,
@@ -38,15 +38,15 @@ def main():
         ),
         version=train.__version__,
     )
-    args = utila.parse(parser)
+    args = utilo.parse(parser)
 
     port = int(args['p'])
     runtime = int(args['r'])
     jobs = int(args['job'])
     workspace = os.getcwd() if args['workspace'] is None else args['workspace']
     if not os.path.exists(workspace):
-        utila.error(f'workspace does not exists: {workspace}')
-        sys.exit(utila.FAILURE)
+        utilo.error(f'workspace does not exists: {workspace}')
+        sys.exit(utilo.FAILURE)
 
     loco = train.loco.Locomotive(
         root=workspace,
@@ -55,9 +55,9 @@ def main():
         jobs=jobs,
     )
     if loco.started():
-        utila.error(f'server already started: {port} | {workspace}')
-        sys.exit(utila.FAILURE)
+        utilo.error(f'server already started: {port} | {workspace}')
+        sys.exit(utilo.FAILURE)
 
     loco.start()
     loco.wait(runtime)
-    sys.exit(utila.SUCCESS)
+    sys.exit(utilo.SUCCESS)

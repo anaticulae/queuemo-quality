@@ -9,46 +9,46 @@
 
 import sys
 
-import configo
-import power
-import protocol
-import utila
+import configos
+import hoverpower
+import protoerror
+import utilo
 
 import train
 import train.performance
 
 FIRST = [
-    power.MASTER098_PDF,
-    power.MASTER116_PDF,
-    power.BACHELOR090_PDF,
-    power.HOME025_PDF,
+    hoverpower.MASTER098_PDF,
+    hoverpower.MASTER116_PDF,
+    hoverpower.BACHELOR090_PDF,
+    hoverpower.HOME025_PDF,
 ]
 
 SECOND = [
-    power.MASTER110_PDF,
-    power.BACHELOR128_PDF,
-    power.MASTER031_PDF,
-    power.BACHELOR051_PDF,
+    hoverpower.MASTER110_PDF,
+    hoverpower.BACHELOR128_PDF,
+    hoverpower.MASTER031_PDF,
+    hoverpower.BACHELOR051_PDF,
 ]
 
 THIRD = [
-    power.MASTER072_PDF,
-    power.MASTER089_PDF,
-    power.MASTER098_PDF,
-    power.MASTER099_PDF,
+    hoverpower.MASTER072_PDF,
+    hoverpower.MASTER089_PDF,
+    hoverpower.MASTER098_PDF,
+    hoverpower.MASTER099_PDF,
 ]
 
 
-@utila.saveme
+@utilo.saveme
 def main():
     commands = [
-        utila.Flag(longcut='first'),
-        utila.Flag(longcut='second'),
-        utila.Flag(longcut='third'),
+        utilo.Flag(longcut='first'),
+        utilo.Flag(longcut='second'),
+        utilo.Flag(longcut='third'),
     ]
-    parser = utila.cli.create_parser(
+    parser = utilo.cli.create_parser(
         todo=commands,
-        config=utila.ParserConfiguration(
+        config=utilo.ParserConfiguration(
             outputparameter=False,
             inputparameter=False,
             prefix=False,
@@ -57,7 +57,7 @@ def main():
         description='Determine performance for selected pdf package.',
         version=train.__version__,
     )
-    args = utila.parse(parser)
+    args = utilo.parse(parser)
 
     first = args.get('first', False)
     second = args.get('second', False)
@@ -74,20 +74,20 @@ def main():
 
     if not any((first, second, third)):
         parser.print_usage()
-        sys.exit(utila.FAILURE)
-    sys.exit(utila.SUCCESS)
+        sys.exit(utilo.FAILURE)
+    sys.exit(utilo.SUCCESS)
 
 
 def run(todo, start: int = 4700):
     for port, path in enumerate(todo, start=start):
-        workspace = utila.tmpdir(configo.tmp())
-        utila.log(f'run performance for {path} in {workspace} on: {port}')
-        with utila.profile(path):
+        workspace = utilo.tmpdir(configos.tmp())
+        utilo.log(f'run performance for {path} in {workspace} on: {port}')
+        with utilo.profile(path):
             ready = train.performance.run(workspace, path, port=port)
         # load findings by page
-        findings = protocol.findings_from_path(ready)
+        findings = protoerror.findings_from_path(ready)
         # global finding list
-        findings = utila.flat([item.content for item in findings])
+        findings = utilo.flat([item.content for item in findings])
         # TODO: REPLACE AFTER UPGRADING?
-        findings = utila.unique(findings)
-        utila.log(f'findings: {len(findings)}')
+        findings = utilo.unique(findings)
+        utilo.log(f'findings: {len(findings)}')

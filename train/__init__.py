@@ -9,7 +9,7 @@
 
 import os
 
-import configo
+import configos
 
 __version__ = '0.8.1'
 
@@ -19,7 +19,7 @@ PROCESS = 'train'
 DEV_SERVER_PORT = 8080
 
 # 169.254.149.20
-DEV_SERVER_URL = configo.env(
+DEV_SERVER_URL = configos.env(
     name='HEAVEN',
     default='localhost',
 )

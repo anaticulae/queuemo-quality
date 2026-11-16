@@ -11,7 +11,7 @@ import collections
 import os
 import subprocess  # nosec
 
-import utila
+import utilo
 
 import train
 
@@ -44,7 +44,7 @@ class Locomotive:
         return Status(viewo=viewo, queuemo=queuemo)
 
     def started(self) -> bool:
-        completed = utila.run(
+        completed = utilo.run(
             f'curl http://{train.DEV_SERVER_URL}:{self.port}',
             expect=None,
         )
@@ -124,9 +124,9 @@ def check_process(process) -> int:
     try:
         outs, errs = process.communicate(timeout=1.0)
         if outs:
-            utila.info(outs)
+            utilo.info(outs)
         if errs:
-            utila.info(errs)
+            utilo.info(errs)
     except subprocess.TimeoutExpired:
         pass
     return process.returncode

@@ -9,8 +9,8 @@
 
 import time
 
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import train.loco
 import train.performance
@@ -18,7 +18,7 @@ import train.pusher
 
 
 def pusher(cmd, mp, expect: bool = True):
-    return utilatest.run_cov(
+    return utilotest.run_cov(
         cmd,
         process='pusher',
         main=train.pusher.main,
@@ -28,8 +28,8 @@ def pusher(cmd, mp, expect: bool = True):
 
 
 # TODO: ENABLE LINUX LATER
-@utilatest.no_linux
-@utilatest.longrun
+@utilotest.no_linux
+@utilotest.longrun
 def test_pusher_cli_done(td, freeport, mp):
     # TODO: AUTOMATE FREE PORT FINDER
     port = freeport
@@ -37,7 +37,7 @@ def test_pusher_cli_done(td, freeport, mp):
     locomotive = train.loco.create(root, port=port, runtime=10)
     locomotive.start(queuemo_start=False)
     train.performance.waitforstartup(port)
-    count = len(utila.file_list(td.tmpdir, recursive=True))
+    count = len(utilo.file_list(td.tmpdir, recursive=True))
     assert count <= 1
     cmd = f'--newest 5 --port {port}'
     pusher(cmd, mp)
@@ -47,11 +47,11 @@ def test_pusher_cli_done(td, freeport, mp):
     locomotive.wait()
     # wait for publish # TODO: IMPROVE LATER
     time.sleep(5.0)
-    count = len(utila.file_list(td.tmpdir, recursive=True))
+    count = len(utilo.file_list(td.tmpdir, recursive=True))
     # one pdf-file and jobinfo for every document
     assert count >= 10
 
 
 def test_pusher_cli_error(mp, capsys):
     pusher('', mp=mp, expect=False)
-    assert 'nothing todo' in utilatest.stderr(capsys)
+    assert 'nothing todo' in utilotest.stderr(capsys)

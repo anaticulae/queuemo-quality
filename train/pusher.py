@@ -8,20 +8,20 @@
 # =============================================================================
 
 import hardcore
-import power
-import utila
+import hoverpower
+import utilo
 
 import train
 import train.performance
 
 
-@utila.saveme
+@utilo.saveme
 def main():
     args = create()
     jobs = select(args)
     if not jobs:
-        utila.error('nothing todo')
-        return utila.FAILURE
+        utilo.error('nothing todo')
+        return utilo.FAILURE
     port = train.DEV_SERVER_PORT
     if args['port']:
         port = int(args['port'])
@@ -33,48 +33,48 @@ def main():
         port=port,
         host=host,
     )
-    return utila.SUCCESS
+    return utilo.SUCCESS
 
 
 def create():
-    powers = utila.Parameter(
+    hoverpowers = utilo.Parameter(
         shortcut='p',
-        longcut='power',
-        message='power files',
+        longcut='hoverpower',
+        message='hoverpower files',
     )
-    hardcores = utila.Parameter(
+    hardcores = utilo.Parameter(
         shortcut='hc',
         longcut='hardcore',
         message='hardcore files',
     )
     commands = [
-        powers,
+        hoverpowers,
         hardcores,
-        utila.NumberedParameter(
+        utilo.NumberedParameter(
             shortcut='n',
             longcut='newest',
             message='n newest files',
             default=0,
         ),
-        utila.NumberedParameter(
+        utilo.NumberedParameter(
             shortcut='o',
             longcut='oldest',
             message='n oldest files',
             default=0,
         ),
-        utila.Parameter(
+        utilo.Parameter(
             longcut='host',
             message='server url to publish',
         ),
-        utila.NumberedParameter(
+        utilo.NumberedParameter(
             longcut='port',
             message='server port to publish',
             default=train.DEV_SERVER_PORT,
         ),
     ]
-    parser = utila.create_parser(
+    parser = utilo.create_parser(
         todo=commands,
-        config=utila.ParserConfiguration.all_off(),
+        config=utilo.ParserConfiguration.all_off(),
         version=train.__version__,
     )
     parser.add_argument(
@@ -82,20 +82,20 @@ def create():
         nargs='?',
         help='select matching files or a single file.',
     )
-    args = utila.parse(parser)
+    args = utilo.parse(parser)
     return args
 
 
 def select(args) -> list:
     jobs = []
-    if powers := args.get('power'):
-        pages = utila.parse_pages(powers, pagecount=len(power.PDF))
+    if hoverpowers := args.get('hoverpower'):
+        pages = utilo.parse_pages(hoverpowers, pagecount=len(hoverpower.PDF))
         if pages is None:
-            jobs.extend(power.PDF)
+            jobs.extend(hoverpower.PDF)
         else:
-            jobs.extend([power.PDF[page] for page in pages])
+            jobs.extend([hoverpower.PDF[page] for page in pages])
     if hardcores := args.get('hardcore'):
-        pages = utila.parse_pages(hardcores, pagecount=len(hardcore.ALL))
+        pages = utilo.parse_pages(hardcores, pagecount=len(hardcore.ALL))
         if pages is None:
             jobs.extend(hardcore.ALL)
         else:
@@ -115,36 +115,36 @@ def select(args) -> list:
 def regex_select(regex: str) -> list:
     """Select files via regex.
 
-    Use power and hardcore as source of selection.
+    Use hoverpower and hardcore as source of selection.
 
     >>> regex_select('bachelor032')
     ['...', '...',...]
     """
     result = [
-        item for item in power.PDF + hardcore.ALL
-        if utila.file_name(item).startswith(regex)
+        item for item in hoverpower.PDF + hardcore.ALL
+        if utilo.file_name(item).startswith(regex)
     ]
     return result
 
 
 def file_select(path: str) -> list:
-    """Select file which is not part of corpus(power, hardcore).
+    """Select file which is not part of corpus(hoverpower, hardcore).
 
     This file is mostly selected via cli.
 
     >>> file_select(__file__)
     ['...pusher.py']
     """
-    if not utila.isfilepath(path):
+    if not utilo.isfilepath(path):
         return None
-    return [utila.make_absolute(path)]
+    return [utilo.make_absolute(path)]
 
 
 def upload(jobs, port, host):
-    utila.log(f'publish to port: {port}')
-    utila.log(f'publish to host: {host}')
+    utilo.log(f'publish to port: {port}')
+    utilo.log(f'publish to host: {host}')
     for path in jobs:
-        utila.log(f'upload: {path}')
+        utilo.log(f'upload: {path}')
         train.performance.upload(
             path,
             server=host,
@@ -157,7 +157,7 @@ def newest(count: int = 10) -> list:
     """\
     >>> assert len(newest(10)) == 10
     """
-    files = sorted(power.PDF, key=utila.file_age)
+    files = sorted(hoverpower.PDF, key=utilo.file_age)
     result = files[0:count]
     return result
 
@@ -166,6 +166,6 @@ def oldest(count: int = 10) -> list:
     """\
     >>> assert len(oldest(5)) == 5
     """
-    files = sorted(power.PDF, key=utila.file_age, reverse=True)
+    files = sorted(hoverpower.PDF, key=utilo.file_age, reverse=True)
     result = files[0:count]
     return result

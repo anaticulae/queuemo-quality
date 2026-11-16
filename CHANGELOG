@@ -68,7 +68,7 @@ Every noteable change is logged here.
 ### Feature
 
 * add option to push files via cli (f3965fe7f691)
-* add option to select hardcore and power files (25b0e12c4891)
+* add option to select hardcore and hoverpower files (25b0e12c4891)
 * add hardcore sources to regex step (f6c2514f90ad)
 
 ### Fix

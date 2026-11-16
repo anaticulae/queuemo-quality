@@ -9,19 +9,19 @@
 
 import hardcore
 import pytest
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import train.performance
 
 ALL = hardcore.F0 + hardcore.F50 + hardcore.F100 + hardcore.F200 + hardcore.F300
 HARDCORE = [
-    pytest.param(item, port, id=utila.file_name(item))
+    pytest.param(item, port, id=utilo.file_name(item))
     for port, item in enumerate(ALL, start=4000)
 ]
 
 
-@utilatest.monday
+@utilotest.monday
 @pytest.mark.parametrize('filepath, port', HARDCORE)
 def test_hardcore(filepath, port, td):
     train.performance.run(
