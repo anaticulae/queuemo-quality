@@ -46,7 +46,7 @@ def main():
         utilo.Flag(longcut='second'),
         utilo.Flag(longcut='third'),
     ]
-    parser = utilo.cli.create_parser(
+    parser = utilo.create_parser(
         todo=commands,
         config=utilo.ParserConfiguration(
             outputparameter=False,
