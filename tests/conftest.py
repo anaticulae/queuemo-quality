@@ -20,6 +20,11 @@ pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 assert utilo.hasprog('viewo'), 'install viewo'
 
 
+@pytest.fixture(autouse=True)
+def setup_env(monkeypatch, testdir):
+    monkeypatch.setenv("VIEWO_HELPDESK", str(testdir.tmpdir))
+
+
 @pytest.fixture
 def freeport():
     for port in utilo.ranges(8000, 8200):
