@@ -7,11 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
+import importlib.metadata
 import os
 
 import configos
 
-__version__ = '0.8.1'
+__version__ = importlib.metadata.version('queuemo-quality')
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PROCESS = 'train'
