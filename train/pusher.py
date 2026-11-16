@@ -7,12 +7,16 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import hardcore
 import hoverpower
 import utilo
 
 import train
 import train.performance
+
+try:
+    import hardcore  # pylint:disable=E0401
+except ModuleNotFoundError:
+    hardcore = None  # pylint:disable=C0103
 
 
 @utilo.saveme
@@ -121,7 +125,7 @@ def regex_select(regex: str) -> list:
     ['...', '...',...]
     """
     result = [
-        item for item in hoverpower.PDF + hardcore.ALL
+        item for item in hoverpower.PDF  # + hardcore.ALL # TODO: ENABLE LATER
         if utilo.file_name(item).startswith(regex)
     ]
     return result

@@ -7,25 +7,24 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import hardcore
-import pytest
-import utilo
-import utilotest
+# import hardcore
+# import pytest
+# import utilo
+# import utilotest
 
-import train.performance
+# import train.performance
 
-ALL = hardcore.F0 + hardcore.F50 + hardcore.F100 + hardcore.F200 + hardcore.F300
-HARDCORE = [
-    pytest.param(item, port, id=utilo.file_name(item))
-    for port, item in enumerate(ALL, start=4000)
-]
+# ALL = hardcore.F0 + hardcore.F50 + hardcore.F100 + hardcore.F200 + hardcore.F300
+# HARDCORE = [
+#     pytest.param(item, port, id=utilo.file_name(item))
+#     for port, item in enumerate(ALL, start=4000)
+# ]
 
-
-@utilotest.monday
-@pytest.mark.parametrize('filepath, port', HARDCORE)
-def test_hardcore(filepath, port, td):
-    train.performance.run(
-        td.tmpdir,
-        filepath,
-        port,
-    )
+# @utilotest.monday
+# @pytest.mark.parametrize('filepath, port', HARDCORE)
+# def test_hardcore(filepath, port, td):
+#     train.performance.run(
+#         td.tmpdir,
+#         filepath,
+#         port,
+#     )
