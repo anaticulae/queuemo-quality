@@ -9,16 +9,12 @@
 
 import hoverpower
 import pytest
-import utilotest
 
 import train.loco
 import train.performance
 
 
-# TODO: ENABLE LINUX LATER
-@utilotest.no_linux
 @pytest.mark.parametrize('public', [True, False])
-@utilotest.nightly
 def test_publish(public, td):
     port = 4444 if public else 4445
     root = td.tmpdir

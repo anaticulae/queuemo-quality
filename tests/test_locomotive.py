@@ -10,7 +10,6 @@
 import pytest
 
 import train.loco
-import train.performance
 
 
 @pytest.mark.timeout(60)
