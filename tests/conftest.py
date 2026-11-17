@@ -25,7 +25,7 @@ def setup_env(monkeypatch, testdir):
     monkeypatch.setenv("VIEWO_HELPDESK", str(testdir.tmpdir))
 
 
-def find_free_port() -> int:
+def find_free_port(check=True) -> int:
     assert utilo.hasprog('curl')
     for port in utilo.ranges(8000, 8200):
         cmd = f'curl http://{train.DEV_SERVER_URL}:{port}  --connect-timeout 1'
@@ -33,6 +33,8 @@ def find_free_port() -> int:
         if completed.returncode == 7:
             # curl does not reach the port/goal therefore it is free
             return int(port)
+    if check:
+        raise ValueError('no free port available')
     return None
 
 
