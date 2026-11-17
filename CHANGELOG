@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v1.0.1 (2026-11-17)
+
+### Chores
+
+- **docker**: Upgrade docker base images
+  ([`7fc7b2c`](https://github.com/anaticulae/queuemo-quality/commit/7fc7b2cd81121a5670d6cf543d51b0b434a25520))
+
+- **github**: Release on every commit
+  ([`49dc8da`](https://github.com/anaticulae/queuemo-quality/commit/49dc8daf28e0dfe0c96329de2df7e0720d508408))
+
+
 ## v1.0.0 (2026-11-17)
 
 ### Bug Fixes
