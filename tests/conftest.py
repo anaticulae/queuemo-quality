@@ -26,6 +26,7 @@ def setup_env(monkeypatch, testdir):
 
 
 def find_free_port() -> int:
+    assert utilo.hasprog('curl')
     for port in utilo.ranges(8000, 8200):
         cmd = f'curl http://{train.DEV_SERVER_URL}:{port}  --connect-timeout 1'
         completed = utilo.run(cmd, expect=None)
