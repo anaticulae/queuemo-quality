@@ -43,6 +43,14 @@ docker-nightly: docker-decrypt
 		$(IMAGE_NAME) \
 		"baw test nightly --generate -n1"
 
+docker-monday: docker-decrypt
+	docker run\
+		-v $(CURDIR):/var/workdir \
+		-e HOVERPOWER_STORE=/var/workdir/hoverpower/repo \
+		-e MONDAY=1 \
+		$(IMAGE_NAME) \
+		"baw test all -n4"
+
 docker-lint: docker-build
 	docker run\
 		-v $(CURDIR):/var/workdir \
