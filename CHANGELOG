@@ -1,204 +1,735 @@
-# Changelog
+# CHANGELOG
 
-Every noteable change is logged here.
+
+## v1.0.0 (2026-11-17)
+
+### Bug Fixes
+
+- **train**: Remove hardcore package
+  ([`6a704b1`](https://github.com/anaticulae/queuemo-quality/commit/6a704b117a755ac06a0dd4a2ba8457575cf42ef5))
+
+### Chores
+
+- **docker**: Install curl for test env
+  ([`154e612`](https://github.com/anaticulae/queuemo-quality/commit/154e612fa51ac5fa07bbff9be846a5ef487e7b7e))
+
+- **git**: Do not track hoverpower
+  ([`0c31905`](https://github.com/anaticulae/queuemo-quality/commit/0c31905d72a153580ec0fd5e928354170e990ce5))
+
+- **github**: Add .github
+  ([`139a828`](https://github.com/anaticulae/queuemo-quality/commit/139a8285523c3f1ee4b83bf6c62313fa129df95f))
+
+- **pyproject**: Add missing links
+  ([`8f2a8c8`](https://github.com/anaticulae/queuemo-quality/commit/8f2a8c8c8b9797254784f35777b83112e486fea3))
+
+- **pyproject**: Add modern project layout
+  ([`724b223`](https://github.com/anaticulae/queuemo-quality/commit/724b223c3f9fb350963cc8d2cac99ced25a94fa6))
+
+- **pyproject**: Fix project name
+  ([`139da67`](https://github.com/anaticulae/queuemo-quality/commit/139da6733f45e96eb7bb674116b1c7b40199e60a))
+
+- **pyproject**: Remove outdated files
+  ([`ed9d5cb`](https://github.com/anaticulae/queuemo-quality/commit/ed9d5cbb9425a933dc862a10122fc904f108f217))
+
+- **readme**: Adjust file names
+  ([`485738c`](https://github.com/anaticulae/queuemo-quality/commit/485738c3c877f8364d3b17f77f308acc50232306))
+
+- **scripts**: Remove outdated steps
+  ([`04b193e`](https://github.com/anaticulae/queuemo-quality/commit/04b193e82b8ba24a845275c4a92941c73b9490f8))
+
+- **test**: Add very long running monday test
+  ([`ae218c2`](https://github.com/anaticulae/queuemo-quality/commit/ae218c2bab6da68d2dd1246fb70ac89bbb0e8069))
+
+### Refactoring
+
+- **packages**: Adjust naming
+  ([`68f1e88`](https://github.com/anaticulae/queuemo-quality/commit/68f1e88059f0f823c357baab86dbc4557f323fae))
+
+- **race**: Adjust packages
+  ([`61bc8f5`](https://github.com/anaticulae/queuemo-quality/commit/61bc8f516d9e49de348977926c59f949cd3b65bb))
+
+- **test**: Clarify code
+  ([`40d60ca`](https://github.com/anaticulae/queuemo-quality/commit/40d60cab10c9f2461d78560c73ead104f510c082))
+
+### Testing
+
+- **fix**: Add missing env var
+  ([`8f80ed8`](https://github.com/anaticulae/queuemo-quality/commit/8f80ed8b02caa8635ba4af276a187aedbf5e37d7))
+
+- **loco**: Ensure that port is free on github
+  ([`3417fb0`](https://github.com/anaticulae/queuemo-quality/commit/3417fb03cafb934b08000b79da9c37fcd0e4ca12))
+
+- **ports**: Ensure curl is installed
+  ([`6d529af`](https://github.com/anaticulae/queuemo-quality/commit/6d529af1443a38044c92b8fbdd24249529553e8a))
+
+- **shipping**: Enable test publishing
+  ([`c9c219f`](https://github.com/anaticulae/queuemo-quality/commit/c9c219fdad3d896ef06c981454e09e471c0b6f94))
+
 
 ## v0.8.1 (2023-01-06)
 
-### Chore
+### Chores
 
-* add pre release step (99779f273c68)
-* upgrade requirements.txt (2fa157e9fa22)
-* upgrade pipe library (2c27cd8cd3d8)
-* upgrade Jenkinsfile (8d45e62cef49)
+- **Jenkins**: Add pre release step
+  ([`99779f2`](https://github.com/anaticulae/queuemo-quality/commit/99779f273c68254f450ec0f9cd829bc922e26af8))
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`8d45e62`](https://github.com/anaticulae/queuemo-quality/commit/8d45e62cef49dafc21d0f1056dcb8c64377a88e9))
+
+- **Jenkins**: Upgrade pipe library
+  ([`2c27cd8`](https://github.com/anaticulae/queuemo-quality/commit/2c27cd8cd3d82b62ec5fc18838c2e630ba9c1a34))
+
+- **requirements**: Upgrade requirements.txt
+  ([`2fa157e`](https://github.com/anaticulae/queuemo-quality/commit/2fa157e9fa229cf4abc6c3860a80689fd585f1ae))
+
 
 ## v0.8.0 (2022-12-18)
 
-### Feature
+### Chores
 
-* add option to change base url (2a56d3bab5ed)
+- **env**: Rename work image
+  ([`20b3d19`](https://github.com/anaticulae/queuemo-quality/commit/20b3d19799f5792a7454df6420a0a53500d95c4a))
 
-### Chore
+- **Jenkins**: Add rebase step
+  ([`f1338cf`](https://github.com/anaticulae/queuemo-quality/commit/f1338cf808efa1477c8d4841b8f63c7cda4cc185))
 
-* rename work image (20b3d19799f5)
-* add rebase step (f1338cf808ef)
-* use quick installer (f1cd9790bcbd)
-* upgrade Jenkinsfile (b6584da35812)
-* upgrade images (4d37ea112354)
-* upgrade requirements.txt (bb807de8c2e1)
-* add missing protocol (77b62be0c95f)
-* upgrade pipe library (1fd0a65e2387)
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`b6584da`](https://github.com/anaticulae/queuemo-quality/commit/b6584da358122145792bc9375d60d188045bf229))
+
+- **Jenkins**: Upgrade pipe library
+  ([`1fd0a65`](https://github.com/anaticulae/queuemo-quality/commit/1fd0a65e238786d618563d77a95b4858bca26623))
+
+- **requirements**: Add missing protocol
+  ([`77b62be`](https://github.com/anaticulae/queuemo-quality/commit/77b62be0c95f5bc08be4b8cc4936cfeeb6186d4d))
+
+- **requirements**: Upgrade requirements.txt
+  ([`bb807de`](https://github.com/anaticulae/queuemo-quality/commit/bb807de8c2e19ac900fdb25bc25f284abb4c60ac))
+
+- **setup**: Use quick installer
+  ([`f1cd979`](https://github.com/anaticulae/queuemo-quality/commit/f1cd9790bcbdc8a4021b3fff10cd0a9fe9a8bee9))
+
+- **upgrade**: Upgrade images
+  ([`4d37ea1`](https://github.com/anaticulae/queuemo-quality/commit/4d37ea11235471a73091648aa43eba86a703cb15))
+
+### Features
+
+- **pusher**: Add option to change base url
+  ([`2a56d3b`](https://github.com/anaticulae/queuemo-quality/commit/2a56d3bab5ed34806a2c131974c3b88aad172dc1))
+
 
 ## v0.7.1 (2022-12-04)
 
-### Chore
+### Chores
 
-* add missing dev server (889986abdb07)
-* upgrade pipeline (a552386169c3)
-* upgrade requirements.txt (2dc29a79be7a)
-* add helpdesk path (46486bc764f2)
+- **Jenkins**: Add helpdesk path
+  ([`46486bc`](https://github.com/anaticulae/queuemo-quality/commit/46486bc764f202af646bf0454f776edf635ba9f8))
+
+- **Jenkins**: Add missing dev server
+  ([`889986a`](https://github.com/anaticulae/queuemo-quality/commit/889986abdb0773904a4120646bbc65798556b8e9))
+
+- **Jenkins**: Upgrade pipeline
+  ([`a552386`](https://github.com/anaticulae/queuemo-quality/commit/a552386169c310a51f16a3036048accf4dc97a84))
+
+- **requirements**: Upgrade requirements.txt
+  ([`2dc29a7`](https://github.com/anaticulae/queuemo-quality/commit/2dc29a79be7ae7be87af343da81be3036b6da528))
+
+### Refactoring
+
+- **replace**: Automated replacement
+  ([`db605b0`](https://github.com/anaticulae/queuemo-quality/commit/db605b05e1754099eea1dc8f2602a8a3c2e8ec7c))
+
+### Testing
+
+- **fix**: Skip test on linux
+  ([`af6112f`](https://github.com/anaticulae/queuemo-quality/commit/af6112fa29435600166bc3a3403fb0882f9633d4))
+
 
 ## v0.7.0 (2022-11-08)
 
-### Feature
+### Bug Fixes
 
-* upgrade environment (fb76a74de706)
-* remove worker (b3e2d5bb2659)
-* upgrade environment (81a76a2d83fb)
-* add helpdesk path to view (cf312837ca4d)
-* run admin helpdesk (46ad34977bf4)
-* use HEAVEN to adjust publisher (ed3c3a19f426)
-* add more queuemo worker (f674a8e249af)
-* adjust dev server port (c93f5538d8b5)
-* add docker compose (1f2e28917ea1)
+- **pusher**: Use resource without directories
+  ([`c4a0628`](https://github.com/anaticulae/queuemo-quality/commit/c4a0628f50a1454b22e7a1e62aac71836f4887c0))
 
-### Fix
+### Chores
 
-* use resource without directories (c4a0628f50a1)
+- **baw**: Add timeout plugin
+  ([`6fb2ee4`](https://github.com/anaticulae/queuemo-quality/commit/6fb2ee4e9f5168ad613632189cac696e123fd588))
 
-### Chore
+- **Jenkins**: Upgrade environment
+  ([`d6d1eba`](https://github.com/anaticulae/queuemo-quality/commit/d6d1eba8f301a963cfd33eabb026b55f21fca634))
 
-* upgrade environment (d6d1eba8f301)
-* upgrade requirements.txt (007b5b5cb43d)
-* add service name (be23edd8da2f)
-* add qcon runner (b4a2621a00dd)
-* add timeout plugin (6fb2ee4e9f51)
+- **Release**: Add qcon runner
+  ([`b4a2621`](https://github.com/anaticulae/queuemo-quality/commit/b4a2621a00ddf3477b2909aacddbcf80f0840644))
+
+- **Release**: Add service name
+  ([`be23edd`](https://github.com/anaticulae/queuemo-quality/commit/be23edd8da2fce3efe12267bc01e32bf03def856))
+
+- **requirements**: Upgrade requirements.txt
+  ([`007b5b5`](https://github.com/anaticulae/queuemo-quality/commit/007b5b5cb43d5fe16c4f7030fc4441b2a9086d6f))
+
+### Features
+
+- **performance**: Use HEAVEN to adjust publisher
+  ([`ed3c3a1`](https://github.com/anaticulae/queuemo-quality/commit/ed3c3a19f4261f254ba98446524cca30cf59176a))
+
+- **release**: Add docker compose
+  ([`1f2e289`](https://github.com/anaticulae/queuemo-quality/commit/1f2e28917ea1637e500d011296d08b8a903a00c6))
+
+- **release**: Add helpdesk path to view
+  ([`cf31283`](https://github.com/anaticulae/queuemo-quality/commit/cf312837ca4d8f8290f44570839a7b7569d93ef6))
+
+- **Release**: Add more queuemo worker
+  ([`f674a8e`](https://github.com/anaticulae/queuemo-quality/commit/f674a8e249af7fcf5c99cbc5b11c4d8ff1a00d3f))
+
+- **release**: Remove worker
+  ([`b3e2d5b`](https://github.com/anaticulae/queuemo-quality/commit/b3e2d5bb265921196aceed880c1c2bbffc09f17f))
+
+- **release**: Run admin helpdesk
+  ([`46ad349`](https://github.com/anaticulae/queuemo-quality/commit/46ad34977bf46bbfc3114534d53adc49dd674d8c))
+
+- **release**: Upgrade environment
+  ([`fb76a74`](https://github.com/anaticulae/queuemo-quality/commit/fb76a74de70620dcef306b5f1dbcaa7259ccb792))
+
+- **train**: Adjust dev server port
+  ([`c93f553`](https://github.com/anaticulae/queuemo-quality/commit/c93f5538d8b540003e106b90cb33dd7224eef0b2))
+
+- **train**: Upgrade environment
+  ([`81a76a2`](https://github.com/anaticulae/queuemo-quality/commit/81a76a2d83fbcff18df92ef2db5a188ffb1c37b8))
+
+### Refactoring
+
+- **loco**: Clarify naming
+  ([`16e3f22`](https://github.com/anaticulae/queuemo-quality/commit/16e3f2238052a684b989d2d7ded26fed95af7983))
+
+### Testing
+
+- **fix**: Ensure that locomotive run ends
+  ([`569aaf2`](https://github.com/anaticulae/queuemo-quality/commit/569aaf2b8d6b5e56dbd3882fa1da4b76a3fd477a))
+
+- **fix**: Limit max port
+  ([`0ce9b99`](https://github.com/anaticulae/queuemo-quality/commit/0ce9b999af6b668fc8835d44a37f418a8929e916))
+
 
 ## v0.6.0 (2022-10-17)
 
-### Feature
+### Bug Fixes
 
-* add option to push files via cli (f3965fe7f691)
-* add option to select hardcore and hoverpower files (25b0e12c4891)
-* add hardcore sources to regex step (f6c2514f90ad)
+- **conftest**: Adjust test for linux
+  ([`b75fb00`](https://github.com/anaticulae/queuemo-quality/commit/b75fb002f179c01dcb5bc8fb3351633916e3f21d))
 
-### Fix
+- **loco**: Adjust cmd invocation for linux
+  ([`4a1eb8a`](https://github.com/anaticulae/queuemo-quality/commit/4a1eb8aefe6b483abb45e0e97f9cf9447b500d3f))
 
-* adjust cmd invocation for linux (4a1eb8aefe6b)
-* adjust test for linux (b75fb002f179)
+### Chores
 
-### Chore
+- **Jenkins**: Add Jenkinsfile
+  ([`6052ed6`](https://github.com/anaticulae/queuemo-quality/commit/6052ed66b23af7cf1e58025377f2ec5bed54c699))
 
-* use a single worker to avoid side effects (843ace424cbf)
-* add Jenkinsfile (6052ed66b23a)
-* upgrade requirements.txt (dcc926991f61)
-* upgrade requirements.txt (9ae475cc5c84)
+- **Jenkins**: Use a single worker to avoid side effects
+  ([`843ace4`](https://github.com/anaticulae/queuemo-quality/commit/843ace424cbf5d8d964d6b220596809973a20eee))
 
-## v0.5.0
+- **requirements**: Upgrade requirements.txt
+  ([`dcc9269`](https://github.com/anaticulae/queuemo-quality/commit/dcc926991f611145bfbe8e9c89626d1c81a87962))
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`9ae475c`](https://github.com/anaticulae/queuemo-quality/commit/9ae475cc5c84e5066d9c6a9fb98c50eccd66fa05))
 
-* add parameter to change port to publish (d07fe11f18b3)
-* add parameter to skip queuemo start (92c0b1d64f9d)
+### Code Style
 
-### Fix
+- **changelog**: Adjust for automation tool
+  ([`aed95ae`](https://github.com/anaticulae/queuemo-quality/commit/aed95ae16193768213ac4529839b4135e280cd4b))
 
-* use general port (7fe8e0a294c9)
+### Features
 
-## v0.4.0
+- **pusher**: Add hardcore sources to regex step
+  ([`f6c2514`](https://github.com/anaticulae/queuemo-quality/commit/f6c2514f90ad9cb0d91494154bd922b66b0e1a76))
 
-### Feature
+- **pusher**: Add option to push files via cli
+  ([`f3965fe`](https://github.com/anaticulae/queuemo-quality/commit/f3965fe7f6915ad473f7c7d9fa6471ffe28e6517))
 
-* add method to push newest[count] or oldest[count] documents (d1af5f262f0d)
-* improve error feedback (d08921986532)
+- **pusher**: Add option to select hardcore and power files
+  ([`25b0e12`](https://github.com/anaticulae/queuemo-quality/commit/25b0e12c4891a743006f135bd16587fb15fe8652))
 
-### Fix
+### Refactoring
 
-* adjust viewo invocation (03f2245fa056)
-* make selector more sensitive (67547167b4a4)
-* fix startup problem (4cd00f30e499)
+- **performance**: Improve program check
+  ([`d114ecf`](https://github.com/anaticulae/queuemo-quality/commit/d114ecf487dc3c1e4be2237c31ae50e55022f0ed))
+
+- **pusher**: Increase structure
+  ([`166386e`](https://github.com/anaticulae/queuemo-quality/commit/166386e56e746a9baf627dbb617218f00ea6623f))
+
+### Testing
+
+- **cli**: Clarify test name
+  ([`d15f7b9`](https://github.com/anaticulae/queuemo-quality/commit/d15f7b91f18c4f306130dc807962584ef62708e1))
+
+- **cli**: Simplify test code
+  ([`b5be72f`](https://github.com/anaticulae/queuemo-quality/commit/b5be72f008c1a6191ec48f9adac3a42f9668a583))
+
+- **conftest**: Setup power
+  ([`ed42a5b`](https://github.com/anaticulae/queuemo-quality/commit/ed42a5b7eb943916cf3a4081a341e6b2479e6c03))
+
+- **dev**: Keep dev build fast
+  ([`d517d84`](https://github.com/anaticulae/queuemo-quality/commit/d517d8410c7a03277edd8efb5b9ab9741a498643))
+
+- **fix**: Do not wait so long
+  ([`bf4cc81`](https://github.com/anaticulae/queuemo-quality/commit/bf4cc81b3708e09859d2ae0d51f893c13689513d))
+
+- **ports**: Adjust free ports
+  ([`9c836d3`](https://github.com/anaticulae/queuemo-quality/commit/9c836d339231024d8212aecc8f7e6eef6a23d5f2))
+
+- **pusher**: Adjust to new API
+  ([`655d647`](https://github.com/anaticulae/queuemo-quality/commit/655d64716b41cc4dc30556fbc451cf030a54f855))
+
+- **reduce**: Do not always run performance tests
+  ([`81708a8`](https://github.com/anaticulae/queuemo-quality/commit/81708a81dcdae4fdf0daf3f705e3e3f8aecc153c))
+
+- **refactor**: Shorten naming
+  ([`2517fc0`](https://github.com/anaticulae/queuemo-quality/commit/2517fc09e6cfd75300d434bdd47c165428f7d305))
+
+- **refactor**: Use fixture shortcuts
+  ([`9e8d8e7`](https://github.com/anaticulae/queuemo-quality/commit/9e8d8e7fa068bd9dbf4a3fd5ccd4b60bd550d43d))
+
+
+## v0.5.0 (2022-07-07)
+
+### Bug Fixes
+
+- **performance**: Use general port
+  ([`7fe8e0a`](https://github.com/anaticulae/queuemo-quality/commit/7fe8e0a294c9549f463407280d826afca5473921))
+
+### Chores
+
+- **fix**: Do not install on test startup
+  ([`c4013d1`](https://github.com/anaticulae/queuemo-quality/commit/c4013d1e06ca941e629d3357c72ac8b704c244c3))
+
+- **requirements**: Pdfs are required in normal mode
+  ([`58f0622`](https://github.com/anaticulae/queuemo-quality/commit/58f06223bec14ed34cb6ede55b382399b722ed6e))
+
+### Code Style
+
+- **pusher**: Fix help message
+  ([`a1712a7`](https://github.com/anaticulae/queuemo-quality/commit/a1712a7c71f9be2001d69dff74f7d2617ae12491))
+
+### Features
+
+- **loco**: Add parameter to skip queuemo start
+  ([`92c0b1d`](https://github.com/anaticulae/queuemo-quality/commit/92c0b1d64f9d92524519d52e83ab68691cf46f33))
+
+- **pusher**: Add parameter to change port to publish
+  ([`d07fe11`](https://github.com/anaticulae/queuemo-quality/commit/d07fe11f18b321665dc514ce407aa7b851970b1d))
+
+### Refactoring
+
+- **performance**: Remove duplication
+  ([`030ab5e`](https://github.com/anaticulae/queuemo-quality/commit/030ab5e74bb329507379d2ddc2d9789f8fdc6bdd))
+
+- **pusher**: Convert to real cli application
+  ([`c33b5e4`](https://github.com/anaticulae/queuemo-quality/commit/c33b5e4764217095ff4de54cfa86958be605d743))
+
+- **pusher**: Reduce complexity
+  ([`3f40aba`](https://github.com/anaticulae/queuemo-quality/commit/3f40aba503c60ecfe6bbbc05b8048f661b4d847a))
+
+### Testing
+
+- **conftest**: Add fixture to determine an unused port
+  ([`db1001d`](https://github.com/anaticulae/queuemo-quality/commit/db1001de0a047cdd8cd416b90e205053f9347c89))
+
+- **fix**: Hope to fix flasky test
+  ([`4fbaef3`](https://github.com/anaticulae/queuemo-quality/commit/4fbaef34dc3b773b5364ed3333efccd4f88dbb49))
+
+- **fix**: Use free port to verify locomotive
+  ([`cdef233`](https://github.com/anaticulae/queuemo-quality/commit/cdef23304d2d03c6f40faf168a3880a97db45eb4))
+
+- **pusher**: Run with wrong config
+  ([`1dde3ab`](https://github.com/anaticulae/queuemo-quality/commit/1dde3aba5695d181d89c28bc687ab4be63e03a9c))
+
+- **pusher**: Verify document pusher
+  ([`81d23a2`](https://github.com/anaticulae/queuemo-quality/commit/81d23a22539dbf0ddb93a9be69b8a6d302101909))
+
+- **refactor**: Simplify code
+  ([`9da1748`](https://github.com/anaticulae/queuemo-quality/commit/9da17481bd5ae0a2e2fe2ddbca9b294180fdbc7c))
+
+
+## v0.4.0 (2022-07-07)
+
+### Bug Fixes
+
+- **loco**: Adjust viewo invocation
+  ([`03f2245`](https://github.com/anaticulae/queuemo-quality/commit/03f2245fa056e301516200e8eb861617482c2719))
+
+- **loco**: Fix startup problem
+  ([`4cd00f3`](https://github.com/anaticulae/queuemo-quality/commit/4cd00f30e49915c37f30155911150cc15d5c8a83))
+
+- **pusher**: Make selector more sensitive
+  ([`6754716`](https://github.com/anaticulae/queuemo-quality/commit/67547167b4a4a702f6067a1ed281124f99df8e58))
+
+### Chores
+
+- **project**: Move project config
+  ([`8fe0d80`](https://github.com/anaticulae/queuemo-quality/commit/8fe0d8028d52b0519240a9794b5aa3f90d913c92))
+
+- **requirements**: Upgrade requirements.txt
+  ([`d37c92c`](https://github.com/anaticulae/queuemo-quality/commit/d37c92c18fa8e82cc3637a25916808081b4672f0))
+
+- **requirements**: Upgrade requirements.txt
+  ([`bb019ca`](https://github.com/anaticulae/queuemo-quality/commit/bb019ca3b3042612384adc9b60ec98593ff69cc2))
+
+- **requirements**: Upgrade requirements.txt
+  ([`c213066`](https://github.com/anaticulae/queuemo-quality/commit/c213066f0b9d6c8bbc5ed8048231894216e77c8a))
 
 ### Documentation
 
-* adjust modules path (65455326bd13)
-* Happy New Year! (bd7cd5ae2dc0)
+- **copyright**: Happy New Year!
+  ([`bd7cd5a`](https://github.com/anaticulae/queuemo-quality/commit/bd7cd5ae2dc0f994263c1a04e28275766feb3b71))
 
-## v0.3.0
+- **fix**: Adjust modules path
+  ([`6545532`](https://github.com/anaticulae/queuemo-quality/commit/65455326bd13a15fdae2567650e3c1b8fe926c43))
 
-### Feature
+### Features
 
-* add option to upload single files (55712ae965eb)
-* add cli option to pusher papers (f5ea0f2df85c)
-* add minimal option to upload fewer documents (4ee5c84103b0)
-* add more options to pusher to distinguish uploads (c45ead449912)
-* add `all` option to push complete repository (8e11bfa9f875)
+- **pusher**: Add method to push newest[count] or oldest[count] documents
+  ([`d1af5f2`](https://github.com/anaticulae/queuemo-quality/commit/d1af5f262f0dbf8cef38ce1abd0317d997168123))
 
-### Fix
+- **upload**: Improve error feedback
+  ([`d089219`](https://github.com/anaticulae/queuemo-quality/commit/d089219865329c59497a04c919972200e20a50ae))
 
-* fix renaming (ac978327904a)
-* fix count of uploaded items (dd7696875d83)
+### Refactoring
+
+- **pusher**: Improve code style
+  ([`c12f798`](https://github.com/anaticulae/queuemo-quality/commit/c12f798967b5fb3c0ee903fd0adf9086fca0eb72))
+
+### Testing
+
+- **refactor**: Move tests into separate files
+  ([`3d9d3d8`](https://github.com/anaticulae/queuemo-quality/commit/3d9d3d880e7bff2add03631e9da9d1a5834f4e73))
+
+
+## v0.3.0 (2021-10-13)
+
+### Bug Fixes
+
+- **power**: Fix renaming
+  ([`ac97832`](https://github.com/anaticulae/queuemo-quality/commit/ac978327904a744c9b90d7aa37edf85b8e2c71a5))
+
+- **pusher**: Fix count of uploaded items
+  ([`dd76968`](https://github.com/anaticulae/queuemo-quality/commit/dd7696875d83b7acc2a4389981f6cb064100b8fd))
+
+### Chores
+
+- **requirements**: Make requirements less strict
+  ([`0ffa134`](https://github.com/anaticulae/queuemo-quality/commit/0ffa13462ff92b4085876ec83ea882c0fb9997bd))
+
+- **requirements**: Upgrade requirements.txt
+  ([`4ba519f`](https://github.com/anaticulae/queuemo-quality/commit/4ba519f479eb3ecacdd6e779b5eb272b579adb2e))
+
+- **requirements**: Upgrade requirements.txt
+  ([`7922e98`](https://github.com/anaticulae/queuemo-quality/commit/7922e98646e66b5c46765edf7ba9fa1da2e72267))
+
+- **requirements**: Upgrade requirements.txt
+  ([`0e17a0b`](https://github.com/anaticulae/queuemo-quality/commit/0e17a0b3ca6db625723d4b4bb72c4cc0192d7dfd))
+
+### Code Style
+
+- **format**: Format code
+  ([`2dbdc35`](https://github.com/anaticulae/queuemo-quality/commit/2dbdc3523927899cb94abda100a3022b7020a167))
+
+- **format**: Use improved yapf formatter
+  ([`a93efbc`](https://github.com/anaticulae/queuemo-quality/commit/a93efbc96138745ca0942f026a899fa905e4ac8f))
 
 ### Documentation
 
-* Happy New Year! (749df4856dfd)
+- **copyright**: Happy New Year!
+  ([`749df48`](https://github.com/anaticulae/queuemo-quality/commit/749df4856dfd7a3ce1c97f39f71bc357808b0896))
 
-## v0.2.0
+### Features
 
-### Feature
+- **pusher**: Add `all` option to push complete repository
+  ([`8e11bfa`](https://github.com/anaticulae/queuemo-quality/commit/8e11bfa9f875d7451a10dd9fa9569422810b59ca))
 
-* improve server startup check (f802037b2697)
-* use public flag to create jobs as public jobs (6f30195d96a4)
+- **pusher**: Add cli option to pusher papers
+  ([`f5ea0f2`](https://github.com/anaticulae/queuemo-quality/commit/f5ea0f2df85ccb73f7ae219d5117b8037d0cf740))
 
-### Fix
+- **pusher**: Add minimal option to upload fewer documents
+  ([`4ee5c84`](https://github.com/anaticulae/queuemo-quality/commit/4ee5c84103b0cad57473f292931a536e4cd46bfc))
 
-* pass error pipe to logging (3637561eb343)
+- **pusher**: Add more options to pusher to distinguish uploads
+  ([`c45ead4`](https://github.com/anaticulae/queuemo-quality/commit/c45ead4499124b472a4cea1e973af59f758742b4))
 
-## v0.1.9
+- **pusher**: Add option to upload single files
+  ([`55712ae`](https://github.com/anaticulae/queuemo-quality/commit/55712ae965eb7c137ebb76a63505a18b5ce7b15d))
 
-## v0.1.8
+### Refactoring
 
-### Feature
+- **pusher**: Split into separate methods
+  ([`bbe2cfe`](https://github.com/anaticulae/queuemo-quality/commit/bbe2cfe20bb4f4e61cb024eeceb4ec2dba14f87a))
 
-* add third race with ancient pdf files (47b488bb1431)
+- **setup**: Cleanup setup file
+  ([`5a0e339`](https://github.com/anaticulae/queuemo-quality/commit/5a0e339432fbb0423771081fc84dfc97e92886c0))
 
-## v0.1.7
+### Testing
 
-### Feature
+- **disable**: Disable broken test
+  ([`0778737`](https://github.com/anaticulae/queuemo-quality/commit/0778737fcf0b97d1765b57328cd4f088265b0a41))
 
-* replace pusher with separate python application (8c4e9a025ebe)
-* replace performance by independent race tool (17c33bbfa083)
-* add pusher to upload a bunch of files (fddd72c4e777)
+
+## v0.2.0 (2021-01-13)
+
+### Bug Fixes
+
+- **performance**: Pass error pipe to logging
+  ([`3637561`](https://github.com/anaticulae/queuemo-quality/commit/3637561eb34382c6755e86beff708e5d31acb196))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`8d17fc0`](https://github.com/anaticulae/queuemo-quality/commit/8d17fc026af9583a8986f2318a6887778931e20e))
+
+- **test**: Keep dev build fast
+  ([`9c06db5`](https://github.com/anaticulae/queuemo-quality/commit/9c06db5529e08b22e983591ce2ef1c0d2efa5170))
+
+### Code Style
+
+- **spelling**: Fix spelling error
+  ([`ce226c6`](https://github.com/anaticulae/queuemo-quality/commit/ce226c65c9f0a4875dec8bf4b54459a19770bfe0))
+
+### Features
+
+- **performance**: Improve server startup check
+  ([`f802037`](https://github.com/anaticulae/queuemo-quality/commit/f802037b2697b28cf8add731a6d7dc756000220e))
+
+- **upload**: Use public flag to create jobs as public jobs
+  ([`6f30195`](https://github.com/anaticulae/queuemo-quality/commit/6f30195d96a4c510e3251b63feb3f1681bdd4c32))
+
+### Refactoring
+
+- **rename**: Improve var names
+  ([`3bc53e1`](https://github.com/anaticulae/queuemo-quality/commit/3bc53e1965b854f2b051890421852c71f8db7c26))
+
+### Testing
+
+- **fix**: Increase waiting time till process is completed
+  ([`218eff4`](https://github.com/anaticulae/queuemo-quality/commit/218eff43d3fddd0d2ea09ba90e4900e9bcd7a349))
+
+
+## v0.1.9 (2020-10-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c364c67`](https://github.com/anaticulae/queuemo-quality/commit/c364c67d0d383673f1c34fa24ac81c7c69424781))
+
+### Refactoring
+
+- **test**: Do not test very huge documents
+  ([`09d76f3`](https://github.com/anaticulae/queuemo-quality/commit/09d76f3e4b2f7d0c6ded35b93a80a3f66464cc12))
+
+
+## v0.1.8 (2020-10-15)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`6fe8bfe`](https://github.com/anaticulae/queuemo-quality/commit/6fe8bfe1444687c4ff754e0039d7e8c58582263e))
+
+### Features
+
+- **race**: Add third race with ancient pdf files
+  ([`47b488b`](https://github.com/anaticulae/queuemo-quality/commit/47b488bb14312be6d80ea11be7ca29b1cd4d68ec))
+
+
+## v0.1.7 (2020-10-09)
+
+### Chores
+
+- **requirements**: Update power resources
+  ([`b4386a7`](https://github.com/anaticulae/queuemo-quality/commit/b4386a798652dfe13b325127b024047c80da4fae))
+
+- **requirements**: Upgrade requirements.txt
+  ([`eafc4ee`](https://github.com/anaticulae/queuemo-quality/commit/eafc4eeac39e6ab69784ceb35f0031e3cb69918e))
 
 ### Documentation
 
-* add overview of provided apps (7b4b2e86ff65)
+- **apps**: Add overview of provided apps
+  ([`7b4b2e8`](https://github.com/anaticulae/queuemo-quality/commit/7b4b2e86ff656c5692b8daf748986819e35d2cac))
 
-## v0.1.6
+### Features
 
-## v0.1.5
+- **pusher**: Add pusher to upload a bunch of files
+  ([`fddd72c`](https://github.com/anaticulae/queuemo-quality/commit/fddd72c4e7777536ceb331bc5a5198e926ccab51))
 
-## v0.1.4
+- **pusher**: Replace pusher with separate python application
+  ([`8c4e9a0`](https://github.com/anaticulae/queuemo-quality/commit/8c4e9a025ebe00fcd4fb36c12f4d1ba931582da9))
 
-### Fix
+- **race**: Replace performance by independent race tool
+  ([`17c33bb`](https://github.com/anaticulae/queuemo-quality/commit/17c33bbfa0836aac40a5dd17b39e4839c8cb13f1))
 
-* ensure to upload files with spaces correctly (a9defad23321)
+### Refactoring
 
-## v0.1.3
+- **cli**: Increase code readability
+  ([`ee7d6db`](https://github.com/anaticulae/queuemo-quality/commit/ee7d6db5845c42d459e54d55c23ddded5ec6fb95))
 
-### Feature
 
-* add profiling step to determine document runtime (fdf3963e1575)
+## v0.1.6 (2020-09-26)
 
-## v0.1.2
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`40b3ca7`](https://github.com/anaticulae/queuemo-quality/commit/40b3ca75a7baf542bca2b8d64fcb5184753900b6))
 
-* add verbose option to suppress process logging in default (1382bd015ce3)
 
-## v0.1.1
+## v0.1.5 (2020-09-14)
 
-### Feature
+### Chores
 
-* add performance page to judge current quality (e68983f864af)
+- **requirements**: Upgrade requirements.txt
+  ([`d158067`](https://github.com/anaticulae/queuemo-quality/commit/d1580674546d4d1c5cf3909fd7d704b9d785c385))
 
-## v0.1.0
 
-### Feature
+## v0.1.4 (2020-09-11)
 
-* add jobs parameter to limit maximal job count (b023949f4e38)
-* add command line interface (88fc91b58514)
-* add command line interface (8531068e6da0)
-* enable infinitive runtime (1a7367ae6a46)
-* ensure that loco was not already started (047c09107f5b)
-* add locomotive to simplify publishing (d084c89f6f89)
+### Bug Fixes
 
-## v0.0.0 Initial release
+- **test**: Ensure to upload files with spaces correctly
+  ([`a9defad`](https://github.com/anaticulae/queuemo-quality/commit/a9defad23321b2a85f4e087957fb61bf6a749373))
+
+### Chores
+
+- **requirements**: Add huge data provider
+  ([`fdaaf7b`](https://github.com/anaticulae/queuemo-quality/commit/fdaaf7b0997763db0ae5bfb6ee599b3960548064))
+
+- **requirements**: Upgrade requirements.txt
+  ([`4cdde49`](https://github.com/anaticulae/queuemo-quality/commit/4cdde494ae9efeca9171ab5331e7dc0882f3eb5c))
+
+- **requirements**: Upgrade requirements.txt
+  ([`25ba6e1`](https://github.com/anaticulae/queuemo-quality/commit/25ba6e106c5f9200e6da592aa98f8af571a67440))
+
+- **test**: Add information about non installed train module
+  ([`4328c26`](https://github.com/anaticulae/queuemo-quality/commit/4328c26b976b44db68fe184238d36aebc8118ba6))
+
+### Code Style
+
+- **test**: Format code
+  ([`8c9094a`](https://github.com/anaticulae/queuemo-quality/commit/8c9094a78e0687af3e84831bc92675877744a5f2))
+
+### Testing
+
+- **fix**: Ensure to upload white spaced file names correctly
+  ([`5e5d233`](https://github.com/anaticulae/queuemo-quality/commit/5e5d2333609588609c0af006fec3fb523636c332))
+
+- **nightly**: Running complete test with `hardcore` pdf data
+  ([`7287f62`](https://github.com/anaticulae/queuemo-quality/commit/7287f6234399ed1973a29b1cecde726d097ce79b))
+
+
+## v0.1.3 (2020-08-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d4e382a`](https://github.com/anaticulae/queuemo-quality/commit/d4e382aa2c5a3b74cc3994f45803d5bbe874dda3))
+
+### Features
+
+- **performance**: Add profiling step to determine document runtime
+  ([`fdf3963`](https://github.com/anaticulae/queuemo-quality/commit/fdf3963e1575c4bc3d71a664afbeb05adc50d36e))
+
+
+## v0.1.2 (2020-08-10)
+
+### Chores
+
+- **performance**: Automate performance computation
+  ([`048c320`](https://github.com/anaticulae/queuemo-quality/commit/048c320e8fca1413e8ac8b47e718944d62a7769f))
+
+- **requirements**: Upgrade requirements.txt
+  ([`bb71d05`](https://github.com/anaticulae/queuemo-quality/commit/bb71d05fc110e956299eea99e38466d507cc5376))
+
+- **test**: Use smaller publish example
+  ([`eee374c`](https://github.com/anaticulae/queuemo-quality/commit/eee374c0cbc2d7f620f2b16a9439c00e764ffbe5))
+
+### Features
+
+- **loco**: Add verbose option to suppress process logging in default
+  ([`1382bd0`](https://github.com/anaticulae/queuemo-quality/commit/1382bd015ce36ca890f4bd649f36a20590c17e22))
+
+### Refactoring
+
+- **test**: Increase code re usability
+  ([`78d4391`](https://github.com/anaticulae/queuemo-quality/commit/78d43910ced26e397c6f765d100bfcdc2081eb1f))
+
+
+## v0.1.1 (2020-07-30)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`b1138f7`](https://github.com/anaticulae/queuemo-quality/commit/b1138f760ddfee137a4ddbea3cfb3874cb9cf2be))
+
+- **requirements**: Upgrade requirements.txt
+  ([`09b49e6`](https://github.com/anaticulae/queuemo-quality/commit/09b49e6931943883a27b9fb27c9c788a9813b08b))
+
+- **requirements**: Upgrade requirements.txt
+  ([`03b04e2`](https://github.com/anaticulae/queuemo-quality/commit/03b04e2fc9c8c88e6f81099b13590a12d5184dc5))
+
+### Code Style
+
+- **test**: Shorten method naming
+  ([`346fa9e`](https://github.com/anaticulae/queuemo-quality/commit/346fa9e78b267743788b3b71fe3155e335860791))
+
+### Features
+
+- **docs**: Add performance page to judge current quality
+  ([`e68983f`](https://github.com/anaticulae/queuemo-quality/commit/e68983f864af2585088cf499f9ae3740c31706d7))
+
+### Refactoring
+
+- **replace**: Replace with new power approach
+  ([`b7db62e`](https://github.com/anaticulae/queuemo-quality/commit/b7db62e88f7baaf8bf504115b29fce5c018f60ce))
+
+
+## v0.1.0 (2020-05-12)
+
+### Chores
+
+- **requirements**: Add GUI and scheduler package
+  ([`82bdb24`](https://github.com/anaticulae/queuemo-quality/commit/82bdb24072e9812cd6010ed054ad4a5d07cfa9a0))
+
+- **requirements**: Add test data generator and utila package
+  ([`7c1dbca`](https://github.com/anaticulae/queuemo-quality/commit/7c1dbca0a91dbb1a48834e75926bbb4981b119bd))
+
+### Features
+
+- **cli**: Add command line interface
+  ([`1522eac`](https://github.com/anaticulae/queuemo-quality/commit/1522eac1b4ab0a452b5d4725a1e3e6a1240a79dc))
+
+- **loco**: Add jobs parameter to limit maximal job count
+  ([`075c392`](https://github.com/anaticulae/queuemo-quality/commit/075c392c781bdf626e5de4d29c52ec3c6ce9d932))
+
+- **loco**: Enable infinitive runtime
+  ([`1a7367a`](https://github.com/anaticulae/queuemo-quality/commit/1a7367ae6a466053faa0a7420ea8936a6647ca54))
+
+- **loco**: Ensure that loco was not already started
+  ([`047c091`](https://github.com/anaticulae/queuemo-quality/commit/047c09107f5b94a3cb96baf5e43637129c7f6f6c))
+
+- **train**: Add locomotive to simplify publishing
+  ([`d084c89`](https://github.com/anaticulae/queuemo-quality/commit/d084c89f6f891be7c1fcc929713d79adff236618))
+
+### Testing
+
+- **cli**: Add test to run train cli
+  ([`b9e62fd`](https://github.com/anaticulae/queuemo-quality/commit/b9e62fd73559659aaef1ae6649cdbad2d7797b89))
+
+- **core**: Run with all pdf resources
+  ([`b97c949`](https://github.com/anaticulae/queuemo-quality/commit/b97c949eb0e6a02991f7c3e24fb7d48e4a57063d))
+
+- **ship**: Upload upload document and run queuemo
+  ([`02e4c81`](https://github.com/anaticulae/queuemo-quality/commit/02e4c81c54ddf987d8e87e94cd6c857b768c7efb))
+
+- **update**: Add test resource updater
+  ([`b082174`](https://github.com/anaticulae/queuemo-quality/commit/b082174e63a7a3d7ed1e8d3582f63287b0fb2070))
+
+
+## v0.0.0 (2020-05-10)
+
+- Initial Release
