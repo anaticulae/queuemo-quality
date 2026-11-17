@@ -1,0 +1,25 @@
+---
+name: Tests
+on:
+  pull_request:
+  push:
+    branches: [monday/*]
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - name: build docker container
+        run: make docker-build
+  monday:
+    runs-on: ubuntu-24.04
+    needs: build
+    steps:
+      - uses: actions/checkout@v7
+        with:
+        # required by test which requires commits
+          fetch-depth: 15
+      - name: run monday
+        run: make docker-monday
+        env:
+          HOVERPOWER_SECRET: ${{ secrets.HOVERPOWER_SECRET }}
