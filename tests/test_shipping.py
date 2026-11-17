@@ -9,27 +9,40 @@
 
 import hoverpower
 import pytest
+import utilo
 import utilotest
 
+import tests.conftest
 import train.loco
 import train.performance
 
 
-# TODO: ENABLE LINUX LATER
-@utilotest.no_linux
-@pytest.mark.parametrize('public', [True, False])
-@utilotest.nightly
+@utilotest.longrun
+@pytest.mark.parametrize('public', [
+    pytest.param(True, id='public'),
+    pytest.param(False, id='private'),
+])
 def test_publish(public, td):
-    port = 4444 if public else 4445
-    root = td.tmpdir
-    locomotive = train.loco.create(root, port=port, runtime=10)
-    locomotive.start()
-    # upload a single file
-    train.performance.upload(
-        file=hoverpower.HOME018_PDF,
-        public=public,
-        port=port,
+    freeport = tests.conftest.find_free_port()
+    locomotive = train.loco.create(
+        root=td.tmpdir,
+        port=freeport,
+        runtime=5,
     )
-    # wait for publishing
-    result = locomotive.wait()
-    assert not result.queuemo, str(result)
+    locomotive.start()
+    try:
+        # upload a single file
+        file = hoverpower.HOME018_PDF
+        assert utilo.exists_assert(file)
+        train.performance.upload(
+            file=file,
+            public=public,
+            port=freeport,
+        )
+        # wait for publishing
+        result = locomotive.wait(seconds=5)
+        assert not result.queuemo, str(result)
+    except Exception as testfailure:
+        locomotive.close()
+        raise testfailure
+    locomotive.close()

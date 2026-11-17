@@ -20,12 +20,24 @@ pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 assert utilo.hasprog('viewo'), 'install viewo'
 
 
-@pytest.fixture
-def freeport():
+@pytest.fixture(autouse=True)
+def setup_env(monkeypatch, testdir):
+    monkeypatch.setenv("VIEWO_HELPDESK", str(testdir.tmpdir))
+
+
+def find_free_port(check=True) -> int:
+    assert utilo.hasprog('curl')
     for port in utilo.ranges(8000, 8200):
         cmd = f'curl http://{train.DEV_SERVER_URL}:{port}  --connect-timeout 1'
         completed = utilo.run(cmd, expect=None)
         if completed.returncode == 7:
             # curl does not reach the port/goal therefore it is free
-            return port
+            return int(port)
+    if check:
+        raise ValueError('no free port available')
     return None
+
+
+@pytest.fixture
+def freeport():
+    return find_free_port()

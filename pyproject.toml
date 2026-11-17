@@ -6,7 +6,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "queuemo_quality"
+name = "queuemo-quality"
 version = "0.8.1"
 description = ""
 requires-python = ">=3.12"
@@ -43,8 +43,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/anaticulae/queuemo_quality"
-Repository = "https://github.com/anaticulae/queuemo_quality"
+Homepage = "https://github.com/anaticulae/queuemo-quality"
+Repository = "https://github.com/anaticulae/queuemo-quality"
 
 [project.scripts]
 train = "train.cli:main"
