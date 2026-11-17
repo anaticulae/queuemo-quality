@@ -9,11 +9,13 @@
 
 import pytest
 
+import tests.conftest
 import train.loco
 
 
 @pytest.mark.timeout(60)
-def test_locomotive_run(td, freeport):
+def test_locomotive_run(td):
+    freeport = tests.conftest.find_free_port()
     root = td.tmpdir
     locomotive = train.loco.create(
         root,
