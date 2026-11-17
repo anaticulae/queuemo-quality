@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.0.2 (2026-11-17)
+
+### Chores
+
+- **license**: Add missing LICENSE
+  ([`9a915ca`](https://github.com/anaticulae/queuemo-quality/commit/9a915cada3daa02f270c3835fc5895f50b4715f2))
+
+
 ## v1.0.1 (2026-11-17)
 
 ### Chores
