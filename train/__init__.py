@@ -17,10 +17,6 @@ __version__ = importlib.metadata.version('queuemo-quality')
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PROCESS = 'train'
 
-DEV_SERVER_PORT = 8080
-
+DEV_SERVER_PORT = configos.env(name='DEV_SERVER_PORT', default=8080)
 # 169.254.149.20
-DEV_SERVER_URL = configos.env(
-    name='HEAVEN',
-    default='localhost',
-)
+DEV_SERVER_URL = configos.env(name='HEAVEN', default='localhost')
