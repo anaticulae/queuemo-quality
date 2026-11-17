@@ -12,6 +12,7 @@ FROM ghcr.io/anaticulae/baw:v1.90.1-python
 ENV HOVERPOWER_STORE=/var/workdir/hoverpower/repo
 
 RUN apt-get update && apt-get install -y \
+    curl \
     libgl1 \
     libglib2.0-0 \
  && rm -rf /var/lib/apt/lists/*
