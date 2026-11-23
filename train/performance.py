@@ -42,8 +42,8 @@ def upload(
         verbose(bool): if True log curl invocation
     """
     base, filename = os.path.split(file)
-    public = '?public=True' if public else ''
-    api = f'http://{server}:{port}/api/v0/documents{public}'
+    public_ = '?public=True' if public else ''
+    api = f'http://{server}:{port}/api/v0/documents{public_}'
     cmd = f'curl -F "file=@{filename}" {api}'
     if verbose:
         utilo.log(cmd)
