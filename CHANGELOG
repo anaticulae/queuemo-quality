@@ -1,6 +1,24 @@
 # CHANGELOG
 
 
+## v1.1.0 (2026-11-27)
+
+### Chores
+
+- **requirements**: Upgrade pyproject.toml
+  ([`1081a6d`](https://github.com/anaticulae/queuemo-quality/commit/1081a6d429879d29dd5a08fc688c1f6383d3df52))
+
+### Features
+
+- **performance**: Make curl verbose
+  ([`4b14648`](https://github.com/anaticulae/queuemo-quality/commit/4b1464895dc14b2e4cf0ae2932f540a84aa7b9ef))
+
+### Refactoring
+
+- **performance**: Do not overwrite var
+  ([`46d2358`](https://github.com/anaticulae/queuemo-quality/commit/46d23580769fa9462054c54bfcfad7be5b110945))
+
+
 ## v1.0.2 (2026-11-17)
 
 ### Chores
