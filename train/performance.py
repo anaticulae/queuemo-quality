@@ -42,12 +42,14 @@ def upload(
         verbose(bool): if True log curl invocation
     """
     base, filename = os.path.split(file)
-    public = '?public=True' if public else ''
-    api = f'http://{server}:{port}/api/v0/documents{public}'
-    cmd = f'curl -F "file=@{filename}" {api}'
+    public_ = '?public=True' if public else ''
+    api = f'http://{server}:{port}/api/v0/documents{public_}'
+    # TODO: MAKE -v verbose dependend?
+    cmd = f'curl -v -F "file=@{filename}" {api}'
     if verbose:
         utilo.log(cmd)
     completed = utilo.run(cmd, cwd=base, expect=None)
+    utilo.log(completed.stdout)
     if completed.returncode:
         utilo.error(cmd)
         utilo.error(completed.stderr)
